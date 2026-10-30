@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ECON 100 · Course Score Estimator</title>
+<!--
+  ECON 100 · Basic Economics · Palomar College · Fall 2026 · Prof. Ron Ishii
+  Week 10 · Course score estimator, linked from the course score estimate announcement.
+  Self-contained: no external requests, no browser storage.
+
+  WHAT IT DOES. The student types the current course score (the Canvas Total) and, if taking the
+  Exam 2 makeup, the expected makeup score. The page shows the estimated course score at the end of
+  the semester for an average of 70%, 80%, 90%, and 100% on the remaining work, with the letter grade.
+
+  The formula (the same one the announcement states):
+    estimate = 0.6 x current course score + 0.4 x average on the remaining work
+               + 0.1 x Exam 2 makeup score (only when a makeup score is entered)
+  About 60% of the course score is recorded as of Oct 30, 2026; Exams 3 and 4, the remaining quizzes,
+  homework, and workshops are the other 40%. Exam 2 is 10% of the course score, and a makeup score
+  replaces the 0 already counted in the Canvas Total. Estimates are capped at 100%.
+  The shortcut was checked against a per-student calculation with the Canvas weights and drop rules;
+  it was within about 5 percentage points for every student.
+
+  Letter grades follow the syllabus scale: A 90% or above, B 80%, C 70%, D 60%, F below 60%.
+  The letter is set from the unrounded estimate.
+
+  Hosted on the GitHub Pages site (ronishii/econ100-fall2026, main) so the link in the announcement email
+  opens without a Canvas sign-in: https://ronishii.github.io/econ100-fall2026/ECON100_Course_Score_Estimator.html
+  Built Oct 30, 2026.
+-->
+<style>
+  :root{--navy:#1B2A4E;--teal:#0C7C73;--panel:#F3F6FA;--div:#C9D3DF;--gold:#8E6612;
+        --red:#c0392b;--slate:#526171}
+  *{box-sizing:border-box}
+  body{font-family:Calibri,"Segoe UI","Helvetica Neue",Arial,sans-serif;margin:0;padding:1.1rem;
+       color:var(--navy);background:#eef1f6;font-size:1.0625rem;line-height:1.5}
+  #wrap{max-width:46rem;width:100%;margin:0 auto;background:#fff;border-radius:12px;padding:22px 26px 30px;
+        box-shadow:0 2px 14px rgba(19,31,59,.10)}
+  .bar{height:8px;background:var(--teal);margin:-22px -26px 18px;border-radius:12px 12px 0 0}
+  h1{font-size:1.45rem;margin:0 0 4px}
+  h2{font-size:1.1rem;margin:18px 0 8px;color:var(--teal)}
+  p{margin:.5em 0}
+  .sub{color:var(--slate);margin:0 0 16px;font-size:.96rem}
+  .step{background:var(--panel);border-left:5px solid var(--teal);border-radius:0 8px 8px 0;
+        padding:14px 18px;margin:0 0 16px}
+  label{display:block;font-weight:600;margin:12px 0 2px}
+  .hint{display:block;font-weight:normal;color:var(--slate);font-size:.92rem}
+  input[type=text]{font-family:inherit;font-size:1rem;padding:9px 10px;border:2px solid var(--div);
+        border-radius:8px;width:100%;max-width:9rem;color:var(--navy);background:#fff}
+  input[type=text]:focus{border-color:var(--teal)}
+  input[aria-invalid=true]{border-color:var(--red)}
+  .btns{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 4px}
+  button{font-family:inherit;font-size:1rem;font-weight:600;border:none;border-radius:8px;
+         padding:11px 18px;cursor:pointer;background:var(--navy);color:#fff}
+  button:hover{background:#2C3E66}
+  button.ghost{background:#fff;color:var(--navy);border:2px solid var(--div)}
+  button.ghost:hover{background:var(--panel)}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  .err{color:var(--red);font-weight:600;margin:10px 0 0}
+  .tscroll{overflow-x:auto;max-width:100%}
+  table{border-collapse:collapse;margin:8px 0;width:100%}
+  caption{text-align:left;font-weight:600;padding-bottom:6px}
+  th{background:var(--navy);color:#fff;padding:8px 10px;border:1px solid var(--div);text-align:left;font-size:.95rem}
+  td{border:1px solid var(--div);padding:8px 10px;background:#fff}
+  tbody th{background:var(--panel);color:var(--navy)}
+  .note{color:var(--slate);font-size:.95rem}
+  .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div class="bar" aria-hidden="true"></div>
+  <h1>Course Score Estimator</h1>
+  <p class="sub">ECON 100 · Basic Economics · Fall 2026</p>
+
+  <div class="step">
+    <h2 style="margin-top:0">Enter your scores</h2>
+    <form id="f" novalidate>
+      <label for="cur">Your current course score, in percent
+        <span class="hint" id="cur-hint">Click Grades in the course menu on the left side of our Canvas course. Your current course score is the percentage labeled Total on the far right side of the page.</span>
+      </label>
+      <input type="text" id="cur" inputmode="decimal" autocomplete="off" aria-describedby="cur-hint" aria-required="true">
+
+      <label for="mk">Your expected Exam 2 makeup score, out of 100
+        <span class="hint" id="mk-hint">Leave this box blank if you took Exam 2 on Thursday, Oct 29.</span>
+      </label>
+      <input type="text" id="mk" inputmode="decimal" autocomplete="off" aria-describedby="mk-hint">
+
+      <p class="err" id="err" hidden></p>
+
+      <div class="btns">
+        <button type="submit">Estimate my course score</button>
+        <button type="button" class="ghost" id="clear">Clear</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="out" hidden>
+    <h2>Your estimated course score</h2>
+    <div class="tscroll">
+      <table>
+        <caption id="cap">Estimated course score at the end of the semester</caption>
+        <thead>
+          <tr>
+            <th scope="col">If you average this on the remaining assignments and exams</th>
+            <th scope="col">Your estimated course score</th>
+            <th scope="col">Letter grade</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p class="note">Your actual course score may differ from the estimate by a few percentage points.</p>
+  </div>
+
+  <div class="sr" role="status" aria-live="polite" id="live"></div>
+
+  <h2>How the estimate is made</h2>
+  <p>About 60% of the course score is already recorded in Canvas. The other 40% comes from the homework, quizzes, workshops, and Exams 3 and 4 that are still ahead.</p>
+  <p><strong>Estimated course score = 0.6 &times; your current course score + 0.4 &times; your average on the remaining work</strong></p>
+  <p>If you are taking the Exam 2 makeup, your makeup score will replace the 0 now shown for Exam 2 in Canvas. Exam 2 is worth 10% of the course score. So a makeup score of 80 out of 100 adds 8 percentage points to your estimated course score.</p>
+  <p>The grading scale is A at 90% or above, B at 80%, C at 70%, and D at 60%.</p>
+</div>
+
+<script>
+(function(){
+  var f=document.getElementById('f'), cur=document.getElementById('cur'), mk=document.getElementById('mk'),
+      err=document.getElementById('err'), out=document.getElementById('out'), rows=document.getElementById('rows'),
+      live=document.getElementById('live');
+  var LEVELS=[70,80,90,100];
+
+  function parse(s){
+    s=String(s).trim().replace(/%$/,'').trim();
+    if(s==='') return null;
+    if(!/^\d+(\.\d+)?$/.test(s)) return NaN;
+    return parseFloat(s);
+  }
+  function letter(x){ return x>=90?'A':x>=80?'B':x>=70?'C':x>=60?'D':'F'; }
+  function fmt(x){ return (Math.round(x*10)/10).toFixed(1)+'%'; }
+  function showError(msg, el){
+    err.textContent=msg; err.hidden=false; out.hidden=true;
+    cur.setAttribute('aria-invalid', el===cur?'true':'false');
+    mk.setAttribute('aria-invalid', el===mk?'true':'false');
+    live.textContent=msg; el.focus();
+  }
+
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var c=parse(cur.value), m=parse(mk.value);
+    if(c===null){ showError('Enter your current course score as a number from 0 to 100.', cur); return; }
+    if(isNaN(c) || c<0 || c>100){ showError('Your current course score must be a number from 0 to 100, such as 64.2.', cur); return; }
+    if(m!==null && (isNaN(m) || m<0 || m>100)){ showError('Your Exam 2 makeup score must be a number from 0 to 100, or leave that box blank.', mk); return; }
+    err.hidden=true; cur.setAttribute('aria-invalid','false'); mk.setAttribute('aria-invalid','false');
+
+    var add = (m===null) ? 0 : 0.1*m;
+    var html='', said=[];
+    LEVELS.forEach(function(p){
+      var est=Math.min(100, 0.6*c + 0.4*p + add);
+      html+='<tr><th scope="row">'+p+'%</th><td>'+fmt(est)+'</td><td>'+letter(est)+'</td></tr>';
+      said.push(p+'% on the remaining work gives about '+fmt(est)+', a '+letter(est));
+    });
+    rows.innerHTML=html;
+    document.getElementById('cap').textContent = 'Estimated course score at the end of the semester, starting from a current course score of '+fmt(c) + (m===null ? '' : ' and an Exam 2 makeup score of '+m+' out of 100');
+    out.hidden=false;
+    live.textContent='Estimates: '+said.join('; ')+'.';
+  });
+
+  document.getElementById('clear').addEventListener('click', function(){
+    cur.value=''; mk.value=''; err.hidden=true; out.hidden=true; rows.innerHTML='';
+    cur.setAttribute('aria-invalid','false'); mk.setAttribute('aria-invalid','false');
+    live.textContent='Cleared.'; cur.focus();
+  });
+})();
+</script>
+</body>
+</html>
