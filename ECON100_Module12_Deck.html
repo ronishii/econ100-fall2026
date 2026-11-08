@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ECON 100 &middot; Module 12 &mdash; Money and the Financial System (Module 12 Deck)</title>
+<!--
+  ECON 100 — Basic Economics · Palomar College · Fall 2026 · Prof. Ron Ishii
+  Module 12 combined reading + lecture deck (single self-contained file).
+  COR item XII — Money and Financial System (definition of money (fiat) · origin of the banking system · banking organization
+  and regulation).
+  v1.0 · Nov 4, 2026 — first build of Module 12 on the Week 09 template (by way of Week 11), under the deliberate-writing-style standard.
+  v1.1 · Nov 8, 2026 — review fixes (Ron's calls, Nov 8): the multiplier slide says what the bars count ($1,440 against $1,952);
+  the SVB slide says why the bonds lost value; the Build #1 label no longer overlaps; the homework table matches the revised HW12a and HW12c; the credit card sentences say that the card company pays the store
+  and the cardholder repays the loan later.
+  Ron's calls (Nov 4, 2026): the money multiplier is taught with the reserve ratio a bank chooses, because the required ratio
+  has been 0 percent since March 26, 2020, and with the one-step formula 1 / reserve ratio; three homework assignments, with
+  HW12b in a T-account explorer; Silicon Valley Bank (March 2023) is the worked regulation case; projection slides for both
+  days; one optional run sheet, the money-creation demonstration. Monetary policy tools are left to Week 13.
+  Every figure's text alternative is 10 words or fewer (Asset Standards §6, §7). The quiz runs under the Oct 13 rule.
+  Every number is asserted in images\figs_wk12.py. Module week Nov 9 – Nov 15.
+  Navigation: → / ← · M menu · N instructor notes · P print view.
+-->
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --navy:#1B2A4E; --navy-deep:#131F3B; --navy-mid:#2C3E66; --ice:#D8E2F0;
+  --mist:#F3F6FA; --line:#C9D3DF; --ink:#1B2A4E; --slate:#526171;
+  --amber:#8E6612; --amber-deep:#8E6612; --amber-bg:#FBF3E2;
+  --red:#c0392b; --red-bg:#fdf0ee;
+  --green:#166534; --green-2:#1e8449; --green-bg:#eef7ee;
+  --gold:#F2B544;
+  --teal:#0C7C73; --check:#EAF2F1; --goldtext:#8E6612;
+  --shadow:0 2px 10px rgba(19,31,59,.10);
+  --radius:10px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:"Segoe UI",Calibri,"Helvetica Neue",Arial,sans-serif;
+  color:var(--ink); background:#e9eef5; font-size:17px; line-height:1.55;
+}
+@media (max-width:640px){ body{font-size:15.5px} }
+
+/* ============ DECK / SLIDES ============ */
+#deck{position:relative}
+.slide{
+  display:none; min-height:100svh; background:#fff;
+  padding:0 0 84px 0; /* room for the nav bar */
+}
+.slide.active{display:block}
+.wrap{max-width:1080px; margin:0 auto; padding:clamp(14px,2.6vw,36px) clamp(16px,3.4vw,44px)}
+.slide:focus{outline:none}
+
+/* slide header */
+.shead{display:flex; align-items:center; gap:12px; border-bottom:2px solid var(--line);
+  padding-bottom:10px; margin-bottom:18px; flex-wrap:wrap}
+.chip{background:var(--navy); color:#fff; font-weight:700; font-size:.82rem;
+  padding:4px 10px; border-radius:6px; letter-spacing:.4px; white-space:nowrap}
+.chip.day2{background:var(--amber-deep)}
+.kicker{color:var(--slate); font-size:.85rem; letter-spacing:.6px; text-transform:uppercase; font-weight:600}
+h1,h2,h3,h4{color:var(--navy); line-height:1.22; margin:0}
+h2.stitle{font-size:clamp(1.45rem,3.1vw,2.1rem); font-weight:700; flex-basis:100%; margin-top:2px}
+.slide h3{font-size:1.13rem; margin:18px 0 8px}
+p{margin:.55em 0}
+ul,ol{margin:.5em 0 .7em; padding-left:1.35em}
+li{margin:.3em 0}
+li::marker{color:var(--navy); font-weight:700}
+a{color:var(--navy-mid)}
+strong{color:inherit}
+.lead{font-size:1.06em}
+.small{font-size:.88em; color:var(--slate)}
+.center{text-align:center}
+
+/* ============ TITLE (full-bleed navy) SLIDES ============ */
+.slide.title-slide{background:linear-gradient(150deg,var(--navy-deep) 0%,var(--navy) 62%,#2E4370 100%); color:#fff}
+.title-slide .wrap{min-height:calc(100svh - 84px); display:flex; flex-direction:column; justify-content:center}
+.title-slide .eyebrow{color:var(--gold); font-weight:700; letter-spacing:2.5px; text-transform:uppercase; font-size:.95rem}
+.title-slide h1{color:#fff; font-size:clamp(2rem,5.4vw,3.4rem); margin:.25em 0 .15em}
+.title-slide h2{color:#fff; font-size:clamp(1.5rem,3.6vw,2.3rem); margin:.2em 0}
+.title-slide .subtitle{color:var(--ice); font-size:clamp(1.05rem,2.2vw,1.35rem); margin:.2em 0}
+.title-slide .meta{color:#b9c9e4; margin-top:1.1em; font-size:.98rem}
+.title-slide .hint{color:#8fa8c4aa; margin-top:2.2em}
+.title-slide .hint{color:#9fb4d6; font-size:.92rem}
+.title-slide .logobar{margin-bottom:2rem}
+.title-slide .logobar img{background:#fff; padding:8px 14px; border-radius:8px; height:56px; width:auto}
+.title-slide a{color:var(--ice)}
+
+/* agenda + due layout on day-title slides */
+.agenda-due{display:grid; grid-template-columns:1.6fr 1fr; gap:22px; margin-top:1.4em; align-items:start}
+@media (max-width:760px){ .agenda-due{grid-template-columns:1fr} }
+.agenda{background:rgba(255,255,255,.08); border:1px solid rgba(216,226,240,.35); border-radius:var(--radius); padding:14px 20px}
+.agenda h3{color:var(--gold); font-size:.9rem; text-transform:uppercase; letter-spacing:1.5px; margin:0 0 6px}
+.agenda ol{margin:.3em 0 .2em; color:#eef3fb}
+.agenda li{margin:.34em 0}
+.agenda li::marker{color:var(--gold); font-weight:700}
+.title-slide .duebox li::marker{color:var(--amber-deep)}
+.duebox{background:#fff; color:var(--ink); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow)}
+.duebox .dhead{background:var(--amber-deep); color:#fff; font-weight:700; letter-spacing:1.2px; padding:8px 16px; font-size:.88rem}
+.duebox .dbody{padding:10px 16px 12px}
+.duebox .dbody p{margin:.45em 0}
+.duebox .dbody strong{color:var(--navy)}
+
+/* ============ CALLOUT FAMILY (house boxes) ============ */
+.callout,.watch,.vocab,.depth,.tryit{border-radius:0 var(--radius) var(--radius) 0; padding:12px 18px; margin:14px 0}
+.callout{background:var(--mist); border-left:5px solid var(--navy)}
+.tryit{background:var(--mist); border:1px solid var(--line); border-left:5px solid var(--navy)}
+.watch{background:var(--red-bg); border-left:5px solid var(--red)}
+.watch>p:first-child strong:first-child, .watch .wlabel{color:var(--red)}
+.vocab{background:var(--amber-bg); border-left:5px solid var(--amber)}
+.depth{background:var(--green-bg); border-left:5px solid var(--green-2)}
+.takeaway{background:var(--amber-bg); border:1.5px solid var(--amber); border-radius:var(--radius);
+  padding:12px 20px; margin:20px auto 8px; text-align:center; font-weight:700; font-style:italic;
+  color:var(--navy); font-size:1.06em; max-width:900px}
+.formula{color:var(--amber-deep); font-weight:700}
+
+/* ============ CARDS / GRIDS / TABLES ============ */
+.cols2{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:14px 0}
+.cols3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:14px 0}
+@media (max-width:760px){ .cols2,.cols3{grid-template-columns:1fr} }
+.card{background:var(--mist); border:1px solid var(--line); border-radius:var(--radius); padding:12px 16px}
+.slide .card h3.ch{font-size:1rem; margin:0 0 6px}
+.card.neg{background:var(--red-bg); border-color:#efc4bd}
+.card.neg h3.ch{color:var(--red)}
+.card.pos{background:var(--green-bg); border-color:#bfe0c6}
+.card.pos h3.ch{color:var(--green)}
+.bigstat{font-size:2rem; font-weight:800; color:var(--navy); line-height:1.1}
+.bigq{display:inline-block; background:var(--navy); color:#fff; font-weight:800; font-size:1.15rem;
+  border-radius:8px; padding:8px 16px; margin:0 6px 6px 0}
+table.house{border-collapse:collapse; width:100%; margin:14px 0; font-size:.97em}
+table.house caption{caption-side:top; text-align:left; color:var(--slate); font-size:.88em; padding-bottom:6px}
+table.house caption .ctitle{display:block; color:var(--navy); font-weight:700; font-size:1.28em; line-height:1.22; margin:10px 0 2px}
+table.house th{background:var(--navy); color:#fff; padding:9px 12px; text-align:left}
+table.house td{border:1px solid var(--line); padding:8px 12px; vertical-align:top}
+table.house tr:nth-child(even) td{background:var(--mist)}
+
+/* ============ FIGURES ============ */
+figure{margin:14px auto; text-align:center; max-width:860px}
+figure img{max-width:100%; height:auto; border:1px solid var(--line); border-radius:8px; background:#fff}
+figure img.plain{border:none}
+figcaption,.attr{font-size:.82rem; color:var(--slate); margin-top:6px; text-align:center; font-style:italic}
+.imgfloat{float:right; width:132px; margin:0 0 10px 16px; border-radius:8px; border:1px solid var(--line)}
+@media (max-width:560px){ .imgfloat{width:104px} }
+
+/* ============ PREDICT-FIRST + CHECKPOINT (interactive reveals) ============ */
+.predict,.checkpoint{border-radius:var(--radius); margin:16px 0; overflow:hidden}
+.predict{border:2px solid var(--navy); background:#fff}
+.predict .plabel,.checkpoint .plabel{display:block; font-weight:800; letter-spacing:1.2px;
+  text-transform:uppercase; font-size:.8rem; padding:7px 16px}
+.predict .plabel{background:var(--navy); color:#fff}
+.predict .pbody,.checkpoint .pbody{padding:10px 16px 14px}
+.checkpoint{border:2px solid var(--green-2); background:#fff}
+.checkpoint .plabel{background:var(--green-2); color:#fff}
+.revealbtn{
+  background:var(--navy); color:#fff; border:none; border-radius:7px; cursor:pointer;
+  font-size:.95rem; font-weight:600; padding:9px 16px; margin-top:8px; font-family:inherit;
+}
+.revealbtn:hover{background:var(--navy-mid)}
+.checkpoint .revealbtn{background:var(--green-2)}
+.checkpoint .revealbtn:hover{background:var(--green)}
+.reveal{display:none; margin-top:12px; border-top:1.5px dashed var(--line); padding-top:10px}
+.reveal.open{display:block}
+.reveal .ans{color:var(--green); font-weight:700}
+
+/* ============ STEPWISE BUILDS ============ */
+.build{border:1px solid var(--line); border-radius:var(--radius); background:#fff; box-shadow:var(--shadow);
+  margin:14px 0; overflow:hidden}
+.build .stage{display:grid; grid-template-columns:1.5fr 1fr; gap:0; align-items:stretch}
+@media (max-width:760px){ .build .stage{grid-template-columns:1fr} }
+.build svg{display:block; width:100%; height:auto; background:#fdfdfe}
+.build .bcap{background:var(--mist); border-left:1px solid var(--line); padding:14px 18px; display:flex; flex-direction:column}
+@media (max-width:760px){ .build .bcap{border-left:none; border-top:1px solid var(--line)} }
+.build .bcap .bstep{font-weight:800; color:var(--navy); font-size:.85rem; text-transform:uppercase; letter-spacing:1px}
+.build .bcap .btext{margin-top:6px; flex:1}
+.build .bctrl{display:flex; align-items:center; gap:10px; padding:10px 16px; border-top:1px solid var(--line); flex-wrap:wrap}
+.build .bctrl button{background:var(--navy); color:#fff; border:none; border-radius:7px; padding:8px 16px;
+  font-size:.93rem; font-weight:600; cursor:pointer; font-family:inherit}
+.build .bctrl button:hover{background:var(--navy-mid)}
+.build .bctrl button:disabled{background:#9fb0c8; cursor:default}
+.bdots{display:flex; gap:6px; margin-left:auto}
+.bdots span{width:11px; height:11px; border-radius:50%; background:#c9d6e8; display:inline-block}
+.bdots span.on{background:var(--navy)}
+.build [data-step]{visibility:hidden}
+.build [data-step].shown{visibility:visible}
+
+/* ============ SELF-CHECK (radio quiz) ============ */
+.quiz fieldset{border:1px solid var(--line); border-radius:8px; margin:0 0 14px; padding:10px 14px; background:#fff}
+.quiz legend{font-weight:700; color:var(--navy); padding:0 6px}
+.quiz label{display:block; margin:6px 0; cursor:pointer}
+.quiz input[type=radio]{margin-right:8px}
+.fb{margin-top:8px; padding:8px 12px; border-radius:0 6px 6px 0; font-size:.93em; display:none}
+.fb.ok{display:block; background:var(--green-bg); color:var(--green); border-left:4px solid var(--green)}
+.fb.no{display:block; background:var(--red-bg); color:var(--red); border-left:4px solid var(--red)}
+#sc-score{margin-top:6px; padding:10px 14px; background:var(--mist); border-left:4px solid var(--navy); border-radius:0 6px 6px 0; font-weight:700}
+
+/* ============ INSTRUCTOR NOTES ============ */
+.notes{display:none; background:#FBF3E2; border:1.5px dashed var(--amber); border-radius:var(--radius);
+  margin:22px 0 6px; padding:12px 18px; font-size:.92em; color:#4a4433}
+.notes .nlabel{font-weight:800; color:var(--amber-deep); text-transform:uppercase; letter-spacing:1.2px; font-size:.78rem; display:block; margin-bottom:4px}
+body.show-notes .notes{display:block}
+
+/* ============ FIXED NAV BAR ============ */
+#navbar{position:fixed; left:0; right:0; bottom:0; height:64px; background:var(--navy-deep);
+  color:#dce7f8; display:flex; align-items:center; gap:10px; padding:0 14px; z-index:50}
+#navbar .brand{font-size:.8rem; color:#9fb4d6; line-height:1.25; min-width:0}
+#navbar .brand b{color:#fff; display:block; font-size:.84rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+#navbar button{background:#2C3E66; color:#fff; border:none; border-radius:8px; padding:10px 14px;
+  font-size:.95rem; font-weight:700; cursor:pointer; font-family:inherit; white-space:nowrap}
+#navbar button:hover{background:#3A5288}
+#navbar .navspacer{flex:1}
+#counter{font-variant-numeric:tabular-nums; font-size:.92rem; color:#cfe0fb; white-space:nowrap}
+#progress{position:fixed; left:0; bottom:64px; height:4px; background:var(--gold); width:0%; z-index:51; transition:width .2s}
+@media (max-width:560px){ #navbar .brand{display:none} }
+
+/* ============ MENU / HELP OVERLAYS ============ */
+.overlay{display:none; position:fixed; inset:0; background:rgba(10,16,32,.55); z-index:80}
+.overlay.open{display:block}
+.panel{background:#fff; max-width:860px; margin:4svh auto; max-height:92svh; overflow:auto;
+  border-radius:12px; padding:22px 26px; box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.panel h2{margin:0 0 10px}
+.panel .closex{float:right; background:var(--mist); color:var(--navy); border:1px solid var(--line);
+  border-radius:8px; padding:6px 12px; font-weight:700; cursor:pointer; font-family:inherit}
+.tocpart{margin:14px 0 4px; font-weight:800; color:var(--amber-deep); text-transform:uppercase; letter-spacing:1px; font-size:.8rem}
+.toclist{list-style:none; padding:0; margin:4px 0}
+.toclist li{margin:0}
+.toclist button{display:block; width:100%; text-align:left; background:none; border:none; border-bottom:1px solid var(--line);
+  padding:8px 6px; font-size:.98rem; color:var(--ink); cursor:pointer; font-family:inherit}
+.toclist button:hover{background:var(--mist)}
+.toclist .tnum{display:inline-block; width:2.2em; color:var(--slate); font-variant-numeric:tabular-nums}
+kbd{background:var(--mist); border:1px solid var(--line); border-bottom-width:2px; border-radius:5px; padding:1px 7px; font-family:Consolas,monospace; font-size:.9em}
+
+/* ============ FOCUS + MOTION + SR ============ */
+:focus-visible{outline:3px solid var(--amber); outline-offset:2px}
+.visually-hidden{position:absolute; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0}
+@media (prefers-reduced-motion:reduce){ *{transition:none !important; scroll-behavior:auto}}
+
+/* ============ PRINT: linear reading / handout view ============ */
+@media print{
+  body{background:#fff; font-size:11pt}
+  .slide{display:block !important; min-height:0; padding:0; page-break-after:always; border-bottom:none}
+  .slide.title-slide{background:var(--navy) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+  .reveal{display:block !important; border-top:1.5px dashed #999}
+  .reveal::before{content:"Answer (revealed in print view): "; font-weight:700; color:var(--slate)}
+  .build [data-step]{visibility:visible !important}
+  .build .bctrl,.revealbtn,#navbar,#progress,.overlay,.hint{display:none !important}
+  .notes{display:none}
+  body.show-notes .notes{display:block; border:1.5px dashed #b8860b}
+  a[href^="http"]::after{content:" (" attr(href) ")"; font-size:.8em; color:#555}
+}
+/* ============ AUG 9 2026 — ECON 102 TEMPLATE RESTYLE (Asset Standards 02 §5) ============ */
+:root{ --logo:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARsAAACXCAIAAACqSmhhAABjP0lEQVR42u29d5ydZZk+/rz19D5nzplekkklPYREUqQHpMkSkSpK9atf4aeigrDo7qKu7oqruCCsgCYiqCwBAgQTqoGYQBLSJm0yfc7M6b28/ffHlXl8mRSBLwiTnOeTz3xmTs55z1ueu133dd83YxgGqa7jd+H54ifDMAzD4HVJknie5ziOvlOSJFVVHXbHuz9OVNXQNC2fz2uapiiKJEmVSkWSJEVRVF2zWCwGy7AsK4qi1Wq12+12u10QBLtNpAfRDWIYhGUJQwijE5Y99LqmaYZhcBxHz+o4WExVoo7vpSgKy7JmyTELm6qqmqaxLMvzPMuyhJBKWVUUpVwuF4vFQqFQKpUgael02jAMwzB08yKGIAg6QwzDYBiG4zie5wVB4DjOYrH4fL66urpgMMiPfrlBCFF1liUslSqInK6PeaUqUdU1bkyWruuEELOMGYZRLpfL5bIsy0ODUVmWK5UKZElRFLyfZVnm3YsQQliG4zjV0HVd1zQNZhDvLJfLVqvV6XS63W6v1+v3+/1+v8Az3FFO6YgyX5Wo6vqELlgUmJExNqpUKmUymUQikUqlCoWCVNFgiyAbHMdxHMeyrKqqR3AmGcKyrEbwCcMsUSzLyrJcKpVUVbVarbW1tQ0NDYGAr742SE8JQojjV72+6hofq1Ao8DwviqJ51xqGkUgkcrlcPB6PxWK5XI46h6Jghzzg/TAghvE3mTH/rhODYRh9NAgaY8EgWmZh5jhm9kkz3G6nz+fjeR6hFN5WlajqGjfWicqSoijpdDqZTBYKhUQiAe9OkiTAA6IoCoKgqYfECcIANELTNLvdDpkx/zQYAoky3r3wXTgg7Jssy6qqGoZmE8S6ulBbW1s4HD6eTBNdfHXPHd8Lu7ZQKECWkslkNputVCrFYtFisdhsNp/Px3GcruuqqqqqqigG9dwgOYIgCIJQqVSoJTFLFMuysFFm3MIwDJfLZRgGBAlSbbVaRZFPRmNwQmVZrqurs1gs+OxxY6aqNur49/oymUwkEhkeHs7n84ZhWCwWi8WCra9pGgSAiopFdNDXEeQgzjGbIOoH6sTgOA7oORWJQw6hrkMmcTTDMFiW5ThGZLlKpUQIqa2tnThxYkNDA9y/qo2qro9zKYoyukfflcxRFIVhGJ7nFUXJZDLZbHbv3r3a6MLeNQwDBgcfFwTBHF9pmoaYB1IEr0/XdSSv8HWQE0IIxzJw8vDnmEU9QAqHGIZeqVR8Pp8sy/39/YjxGhoaVFUdI1fjFwCs2qhxucxuErw1ij1ompbNZiORyMDAQCKRoB4a5IfnechGsVj8m/P2LgPE0dcPl1Uz6sBxHMOxqqrq78Nf03nCsCzRdV1RFIvFEg6HEVPhNI4D369qo8bZggcFxY/9R5OzwMGj0Wg0Gk2n07BjtbW1iJEURVFVtVwuw564XC6zONH4x2pz0D/fpXpHUTu4c4e8u/evjnmeLxbzLMva7XZJkrq7uwkhXq/XZrPh6si7c2VViaquj9w60TCGOmwsy/b19eVyuZGRkVgsViwWBUHw+XwulyuZTFKRgI2CPMiyTA2R2URBDqk4UZRCFEWaQaIooqap73f34+RxWGSW4/H4wMBAR0cHXoTKGL/Gqur1jeMFm5PP58vl8jvvvEM3K8QG6ILZ1JjRbcgJ4iWzg1cuKTTvZM4vQQCovwfZkxTZarW+L6+P0XSWPWSFwIESRdFmsy1btsxut1Prh1/GIzupaqPGsThls9nh4eGhoaFUKgVEgdLqIGylUsnj8YC2R1E7bNa6ujozJYK+XirKmqbJsixJUqlUKpfLlUoF+V9YD0EQzMSID+C1WixWhmGAjjgcDlVVY7FYNBoNh8PIeplVQNXrq66P3Osrl8vZbDaTyWQymXQ6nclkisViMBiEV4ZIied5h8Ph9/vz+bwoim632+fz+f1+j8fjcDgABpoFyfQFxDCIoujlcrlQKGSz2UKhgPwVpAvfQg3X+z1/lmVhSxGPUfp5f38/qOtknKenql7fOFvFYjGRSPT390ej0VKpNJo5FbPZrMViodGOKIo+n8/j8XR0dFAbZd6mkIrDRUJVdY5jGUIIQ4hBDEJkSVNUqetAdy6fSSUzFanEEI7jGUNnVF3jOO79Yn26rsIXhQsKBF9V1VmzZk2ePBnmF2c7Hr2+qkR9/AtYHLwp/Fkqlex2OzYTgg1BEHRdr1Qqr732Gs3A0sCJEJLL5ex2u8/nCwaDNTU1Xq/X4XB8uKBZPp8fHo4ODQ0kk2lZrgiCRRBFSVIIx1L7Q0Oso10rBz7gYUsURcMwLr74YlwRiLnjMflb9fo+fnEihFBxwr50Op2yLMOzQgZJ1/XOzs5du3aB3WMGuKETFy1aJAiCfXSJovihnyoAd6tV9HgSYDPl8hm7zQ0bRbkRADzMqOB7jK/Iu9Hzcer4VSXq44+LqCUx7ycqEkgxxePxRCKhKApwAuRbnU5nMBisra11u921tbWHB0UfutfkcrlcLlcgEBgaGuru7i6UimYIAUIOL+79ShSuKJPJuN3uqkRV1wdfJoaOQX+hmymdTu/fv//gwYOlUsnlcoXD4Xg8zvO8z+eDgxcOh71e7+HRPPUJPyyJkmUZ8RghxOFwhMNhWZY5gc+kC+qoIgDSQD5QihZlHYlEwul0ktE8WBWZqK4PuDRNM+9CWZaRrh0aGsrlcsRUa+TxeHw+X0NDA5g7eH+lUhFFcQxv6KMI9qiDahhGLpfLFfJb3t5ekiq6ruMEZFkGwn6UfXXUOEqWZY7jmpub582bh48jJBt3lqpqoz4Rjp95/5XL5Vwut2PHjlwuB/YdQDyXy+VwOCZOnIiUKN1qMAsftUZHbxZwCJHC8ng8TrcrUhcbicfy+TwZJaqrqvoB1DRQjUwmY4b4xiNZtipRH784AX6AqclkMrFYLJPJxONxJEABjjscjqampsbGRsohAp5msVjMLY3GdD760KMRnufN8s8ybEdHh86QcrkMM0uTv+9XqCCNxWLRrBqqElVdH8TfgzgpipJIJPr6+oaGhjKZTCgUQrqpqalpwoQJDocDb0bhgyiKFLrAiyjd+yikiHploOTCtzxE2GUZn8/l8/mGhoYkSQL2CKxvTF+K92KjWJYtl8uwUeM3w1uVqH+oa2cOdRCZQDByudzAwEBPT08qlSKEeDweQRCmTp3a3Nzs8/nIaNIT64ja/aM+/zFwPL7RIERVSVtbm6IoO3fuLBaLeNv7FSccEOIkSRLNJYxHEnpVov5BS1EUulHQuUEQBFEUZVmOx+O9vb1DQ0PFYtFms4Er1NDQ4PF4kAIin+BcJ8sSliV2u93hcNCI7gPko8w9Osd1lVRVov5BC/wg+DOIfFRVlSRpaGhoeHh4YGCgVCr5fL7m5ubGxka32w0Qme42BOufwK3GskQnxOPx+P3+crkMp/SDSRStZSQm5ntVoqrrWEuSJMB0DMMkEonBwcGBgQFQkNra2hobGxsaGqhdIqMUJNpn7xOLJiPtOzIyIknSB4AlqI2ihfd4sSpR1fV3gm9wq2VZHh4e7urqGhoa0jTN5/PV19c3NTUFAgHQ29CaC1sKDbo+6duIIx6PB2wpuLXv9wiw3uY+gVXORHUda1UqFavVSgjJ5/MHDhzo6+srFoscx02aNMnv99fV1VHTROveDw/NP5lcbFnRRYF1uVwQfo7jKpWKuSHMe5coZLqO2AemKlHV9a7FMEypVMrlcv39/QMDA4qihMNhdNiyWCxmyQE11qykaSU8+egzuR9gqaoqCqLNZkHLS2qp3q/XRw3UB/MbqxI1ThaeLGP+a8x2Yd+Ld2KxWCKRyK5duyKRiCAIzc3NEyZMCIVC4NpQ1jaFH8w+z5h+5Z8gNUGIQYhhaCwhhCEWXuB5VuR4w9BYg+iMzhqs+Sc5wt0bq3fG+37hT0wBee875tAGYAhhiMEQnegG0XViaETjCEMIwxKOIxxjEGIceht13qgYlEqlnTt3JhKJQqEQDoc7Ojqam5spQfsTKzDv8Ra57DZV0Vie8bid/QPdZYa1ijxDdJboDCHmn8cQJ7fbHYvFUHEoSRIhxGq1yrL8UZSlVCXqY5U/5tBPg6ECaRCiM8TQicGNuYEGKZUrdrsVIRDw8UKhkM/no9GoKIpNTU3hcDgcDiPMOA5U8qhpJRzDchzDonmzQQijMwYh5F0/j3EcKCBolnHdD/2Ek6j3tYUhRTo79uMcYRmiM6aDGaPWCWwgMjpLJpPJ9PT0DAwMuN3uYDDY0tJSU1PzN39x/LfSp84qIkCK8r9veEOWrVYr7h7CSFJFz4/LpTCHDBV76OehrgrsodcIIYxuiraY0aiqWCwODw+PjIyAWDRlypRAIEBrmeDPHD/t803jbT6YRKmq6nK50AeTKpqqRB1vSydEJ0QjhDtkmkablBiEIRxhCCEM9o5GwyhVEwVOUZShoaG9e/eWSqXm5uaJEycGg0Hz1BlK86ve5EO3WtfdbveY7mJViTpuhQr2iCU6AQJxyCQxhGEZhsBGaYQwhFgELhKJ7N+/P5PJ2Gy29vb21tZWMw2CHMY6PR7iTcMAZ/wDe2souKpK1PgEG95f1KWzo+J0CJswTDHWaGhljApeOpPu7u4eGhqqqamZOXNmXV0d3XCH77bjYKIz7d8EJIail+/3OBzHOZ1Oi8VC7xLq5KsSdVwtlug80Q1icLhTxiheZbz7XcQwCANpW7dunctmnzZtWnt7u8fjQckGpash9URG+ygcB8gElShaNPXBkrMcx1mtVjpHh4xbItIJJ1G6prEcRwjRR8ciEZYluk6QEdL1Q/MmGIawLEMIp8scaxCdZBNJT02okslZPV6jWGJsDsKxhGE1TWM4jiWkJ9K7b1en2+2e2NrW3NxstVrBAzD7eOM69XS0RbNGPT09Pp/PMIxCoQDK1dGEkPaUxd3QNC0cDuMjLMsqioKhB+NTC59gLh/LcUTXCSGsIPAWC2FZRZJUVSW6TnQdgkRYljAM0XWiqpwsE01L9PYe2LmL6LrVYScGwzgchGOJpsqSxHKcQYz9B/ft372nVCxOnTq1sbHR3AfiuF/mmnzMCD3GtY+Zfk27DjqdTjMVcPzevRNMogghhGiyIhWKhwAGTRcsVl60GKpGdMRI4EcQohtEUYmsE0kf2NE5vP8g0QjheKKphGFlSdI4TrBaKoq6Y+eOfbs6naK4dNGituYWVLCT8dkI/wNgEpCoUqmk67okSe8l/qHDPuAo8jwfCARoKo+i8OORMnsixlGg0qmVCsdxzKh+ZTiOMAyhqhHGiuEIYcj+g5Gde3zhENF1wrBE03RWkYlu5biiLG/fvn1ooL8+HJ4zayaVJUKIqqonFDieyWSQZ6Mjqo4hhJAZzDJFK1y/3w/X0Rw+VafdjINVyResDifPmS5cN4qZjMPnOwQ50DgKmLlidL/6l1RX9/zZc0hFJnaWWC0a0UXRMZJJ7dndmU6lOiZMmDNzNtF1UlGIxaKoCjg1x9nM5mMgE4SQZDJJcYW/K1Hm91gsFjrjkIz/ufEnnERR10ItlSRJcrhchOcPiRO1Tn8TNp0Mjgzu3CPFUyGPl0gKsVkJQ3SG29t7sKu3RylXpk+bdtKEiUTXia5pUoWzWGiz8vGraN+3nqpUEonEmOFuRxMniknAWDkcjmAweEQprXZuGQ86VRCIrCiyjJYpXV1dfr+/qa1NKZd5nmdE8ZBEGYYhy0yhOLj2z0Y2bzMIMVgiWgghpXzuYDKxY+9eh9szbWZHR0MLQwiRFaJqnN1BjHd1GH6/7RbGr0RlMhk69+3Yb6blupAZh8NBuY5jDFQVPR8nj79cttodgs0hZ/JvblxXSKYntrWffvppxGolTpZwSNoaTLlI8rnN615t87j9op0oGuE4wrA7OnfvGY40TuiYMGlS0OZkCVFKsiBY4EASRtf0v/X+HtN++fgEJwhRFKVUKXtcboZjWZbVicERYjCEMd7102ymaAGlxWJxOp3m+bzj2rCfiBJldblJRSaa5gs1XnHBpbueXfvqqqdi//vnuTNnTDr7TNJcRwSNuGykkt32zGq3zhRH0t7GMOmYRGLRwXJ+T3d328yZs2bMYQnhCWEUIhCRKKMeo8CI/N8SUMcf4ehwccoVC/2DAwbDJNMpj8/HcCzDcQZDdELYd/8khOiqpuu61+sdGRlB8gpll2MOO3795BNMohiiGYTjCLEKRNeJqpOA96STplkLhciuzq6Nm3o3/rWuuWHG4gVk2UKyf9e2Z9fMsPgdDqfsEEl0KJKOFl32jvaWuTPmZEpFm8XGcawAm6YTohBFUgSLcOLcTlgdSZJKlQrDMAzH0WJkwN6H/ySE2Gy2fD7vcDgURWlpaTnO8JsTS6JUQvKMyjE8wzMcYUTR4G2EnDJ5Yr1nJDvCqSU2k8/1D/z1d32+5160OWwLnLXpXCLNG8VoYkL3bs7nmtjQWmMwdlK22UWdEE1VspJEWEa0WVmRIw6BEtVPnJXP5/P5PMMwoiiiZfQxuq9gMEI2m62pqVEUpa2tjaJ8x8c6sTK8DCE2hodFKRI1T/QSQ4hbIBPrFt98TXhGR5lVBQvrZrnMgZ7Mjr2Bihpy2wNui8/KsflMiOU4tzfgdJOSxCRTXD4vGrrHKnhsPEPkvJ5JScljV6oej2bKyGazkCie51VVxWy1o244lkWmTtO0YDDo8/nMSbyqjRpnizMIpxIrQzROLxJdZRiJEIPoVkHhmgMNp0xNDPdK0XTAbrUavkoqU4gPl7Wi6LKImtr59JqMTmrbJthrQoH6Zv/kKcTpID4vCXiJlbOKxMLymsXCEv2E0lPpdDqXy0mSJIoiAPFjs5BYli0Wi06nU1XV5uZmMuo30qxGVaLG1dIJIASOZWxWvkKISjSNEJnVbKVizdKFZ4Tq9jzyu8j2Tr/GOh0WQVOag3Uqo6clqZBXJFnJyj3R/YMHhZ0l/QXDZhH9XntjrW9SW2hKq7+9xeYLnGgwz/DwcKFQIKaWYMeGvEGE9Xq9PM+HQiHzKOGqRI3PUBrVthZGMHidUTlCWGJYiUAcLlKRia5XpJLFaXWLDjWdzSfyHsMoF/MVXTcctmAwKFmsaU1PVSR3IOQJhxomd9RPnUjamknQRUT+UI3UiVSYOzIyUqlUANbR5uzH4OPRLrmtra2iKILddzwhoieYRLGEsAbhGSIQgyEGMXRdFolGDEIyJVIoSdt265kiKxnReISV5La6unI0zfB2p8eWEYSK08GHQ/Nnz3FMnkQmdBCOJRxPeIYILBEYwhLCsIQ5sULTbDarjc5Ne49JJJvNpqpqY2Mj6hQLhYJ5bEJVosbTUlmSd9DOELKVsHZW5FSVpLOE2Mtr1nauf5XPFi2yYRWcVodFUw3G58vIUtFmm/nt/4+01JPaABF5whIiWg3CEsLphBiE1QkxiE4IEd9bQ8xxt8yt8zKZDFrQvLnxzTFDNOgvaOAO6M9cB1Uul/1+f2trK8uygiDouj6mEr4qUeNpaYQohEiEGEThiEaUMleS7QZHOKe65s/p3mFRY0slpSxJ/oCbtdtiqbRTtBYEoWi1EYuFeN3EYZE4LkMYg1gMQjhCWEKEQ74eKxCiH6foOU3CYro25KpSqUiSpB9FAs2xE+VDqLridDoDgQBA83Fa+l6VqFEnnhDh0C+MjXBO3kGsVpIukUh0/bPrSDrDlCWHxz1pxpTa+bNJPt3/5/VaqqIaXIXwRNGJ3U44rkQEiXAqIeBMWAhhCOEJ4UYFjBy/EiVJEmyLLMv79++PxWJWq/XY6QJz32mGYXjCBINBEPkwA7sqUeN4CYRoxZzX4eYIy+ksUXWisKR74LWn1ySLRa/b1TxtcuuUCa6F80hzHWGkZlYdfPIlRtErkiKlMxaDJQbLM6yVMNroAS2EiISIBmEoLHH8IhO6rsP3y+fzsViMYRhZlvWjSCAdeahpmizLSFi1NTVTpjmGpiI3ddywH08wG6WTGs5JyhpBTzBJLnX3bN28ec9Q/7xli1qbW4LzZ5FaHxEJEQnhhOYLzkpu2kkG45JUTg5F6hWdVDQXz7gEUSOENQhDwUP8O0T1Ox4dZk3jOI527Uyn07Isu1yuUql0RIkSBAFTpHiex5RUnucdDkdLS4vb7R5joKoSNW6XcYjaSXiO2G2VVOKtPbtUu/CZL1zZNGkyYVnidxGOEKKkyiXO6fDU1rQsmBkXOwsH9w+lhusZncgSaHwcJk2YBwiwo41nj1+vDznceDze3d2dTqctFSvP8/pRnD1gEijxQKFuIBCgvFi0iDr+btSJh54LhNgIsbBE1Ate0X1Se9Drb2xqIRohpQopV4jdSliL3243CCGllP/0U4p8sZDr7lfTJwsa0TRCeGKwhHCE8IQ5FD/JzCH2ufV45/UZhpFOpw3DCAQCqq4dLfUkCAImxgOQQPMwl8tFh8mbm6QfT6HUCVfNkc9nXF63wbBFpcS5nNNmz2MIKZSKdlZgrQLh7IQQoqjEYBmDEFYkDfW2iRPkbe+kWUJ4jhCWcNzowA6dMCxhicYQnRB1dI7H8bpyuZzb7WZZ1u12T5482el0lstlwjKgXY356XY6c4UC0XVOEHRVlRTF7/X6fX6IE7xB/H6ox9txs0qlkmEYkiSlUinawVDX9UqlgsYakiTJsoyCMPi+sizjbZVKpVAo4Hf62XK5jI5txrtXuVxGuxxacEYPgl9wc/HxMcc0v1mSJPpnoVCQJMn8ivlP86HokitSpVw0DEM3NFnXVMPQcba6YeiGoemHfjn0p2ZIFaNc2vPKK//85Zu1eNzIFwxFMRTNUDRDMZRc0dANRVGiyYRiGIph6KP3J5lMor857rBhGMVicczJKIqC5kH0tiPkMN8B872id/7wZb4JmqbR1uo4gVwuh4coyzIe4hHfmc1mx9z5MSdDnxS9/6qq4vzoz3K5jN81Q6e/y6pi/qIx54z/yufz+F3TNHrT1KMs8wnTW3TEJ27ePPQRFItF+js9MUmS8HsulzM/L1w4vfmyLB/ji1i0HRRF0W63U+NrGIbFYoErzPO8IAiIR6kHXKlUCCEWiwXEYYCqiqLIsgyWF5yBZDJZLpfxu9VqpV3sGIbJ5/OEENw+vB9uN+2cKMsy/hf7LJvN4htFUaxUKmBnOhwOURRFUcSNwIXQRCTdMfl8XlEUtIYTLKIgWgkhDGENRWUNgyHE4XCUyiWDGLKqICiSFZkwRK5IhBEJa/PUNrZPmVmSdMMA+MASRSUsKUhlQgjP8bW+AE9IJpFgRllqHo9njDMDUEuSpGKxSDucgIlD38DzPB3trCgKto7ZlTqaZsRV46axLEu1vizLNpsNQ3LBACKjZ4iNQudcEULcbjceLswIfdb4E/cQx8RTs9ls0ATlcrlULKqqKkuSrh+at6ApqiAI+F3gDjVIUlW1UCggW4XdSfcVzhl3gGaruKOsUqmEEyajE1l1XaebR1GUUqlUqVQobxBdNWk22W632+12egcokolzQJ96HLZSqSiKQjdqoVAQBMFqteq6ji+ld/IQrVFRFByFUkiwEWVZBiMYJ4HP8zyPk4Z2EQQBZ1Mul202G65/DG6jaZq51BnPWxCEY9CNIUVH3D2U2mzerFAtVquVbiMogmNEAni65i8ac9o4gi4rrEYIL+iFwoEDBwKBQE2oluCxMYQwRJUlnufJ6Ac1VeUEPp/P45HgmKhuOMb5wHTgPdCUlUolEAi8x3ty+NEkScKboWvwKVmWK5UKypOwayFFeAp44piiO+aAqHcCCI5bRK/ovfctgsrD9x7x6QCoQExFK6yAEB7xgMViEeKECyyVShzHWSyWWCxWW1trvht070FgYrFYTU1NpVLBxqb3B3UoMCTHvpZMJgPXF4dFgzTafJvBIzzGLCNJkqg+4DiOniLsEoZ7U4dYFEVYG3iMNpuNmjXKVaFyC52tqqogCMVisVKpQJXiIs2dSmk/RJAycQGVSkWWZbrzzAaaEIKaNuwSPB78hE6ix4SatFgsIyMj4XC4VCrhRuOXfDrjFKyMxUp0nRj6yOBguLUV4lTIZpxer6GpsixzgoDp6BarlTAkl8s5HA6MTLdYLLjMVCoVDAYRilAhgWE3m5QxsmH2GiRJwrUf8TElk0ka9x9+ENwuyNjR5BBq2G63U9mDe0LPjY67p0uWZXZ00d2paVoymcS2hnGgtnEMFo/YTJZlt9sNYaPK6L2vaDQaCoWIqSSkXC6nUilRFP1+P3ZsuVymVVh4W7FYdDgc5XIZHzFLUaVS4XlelmWzyOVyOUzsZhgGh4IZtNlsLMuWSiWXy3WIfQ+vkUZTcBZVVY3H49ArZre7VCpRB5e6/iMjI8lkkr6zXC7T0Ii6wuYAQJblWCxGHd/DIy6z414ul8vlsqqq6XTafFh48NT5pl8EQ28+4Ww2aw7P6P9SJ958RfQr8KJakbRcyVAMo6wYipHsjxiIliTV0AxD+1vEpataMV8w9L9FCNiXOEnqFfT398MLhyUZE1SkUqlEImH27+kR3uMqFovJZDKXy8FXgbnDotFCoVDo7++n34I2RkeMl3AfUqlUKpWiYQacF/xvMpmETsT/JhKJMQeBeqWXE4lE6HMfs0nwfnpWQ0NDsVhszHvMK5FIRKNRwzDQeRP7Cid2xEBU0zRsIdqpk74nk8nIskxfwVbBmei6jmsfHBw0R7+5XG5MkE8vk3/ooYe2bt2qKIrH48GXORyOQqHgcDicTqfX621oaJgxY8bUqVMtFoumaaAJU12ye/fu1atXJ5NJlDpD4mfPnn3ttdeWSiVVVaGtqcGpVCqvvfbayy+/nM1mbTZbpVJxu93Lli1btGgRqtDgQONJsyxLlaLX6z1w4MCWLVt27969f//+SCSCk1mwYMGUKVPmzZs3YcIEFL1RH9Visaxataqzs5Nl2Ww2GwgENE275ZZbmpqacCYILei5vfzyyxs3bozH43iQ4XB42pSpn7vos0TTDFVlBN7pdB5KNzGE6Pojv/713v37dF0nLCsIAupYb/v2t5qamkRRhC6k4DIk/+c//znsp81mQ4QTjUYxLVMQBKfT2dzcPG3atNbW1lAoJIoiz/MI061W67G9keHh4VAoZLfbbTbbW2+99dprr23fvj0Wi8HFCgQCEydOnD59+vTp06dNm4Y7gGWxWPDU9u3bt2vXrs2bN/f19XV3d1cqlXA4PG/evDPOOGPOnDm05gLnI4qiqqq9vb0rV65UFMVmsyGoOPvss8855xxYXfCPcHsLhcLrr7/+6quvZrNZr9eby+W8Xu9nPvOZGTNmcByHkMEcUj744IP5fF4QhHQ6fWSQmucbGxtvv/12WBK4XvR/+/r6du3a9Ze//GXz5s2JREIURafTOWHChDlz5px66qmTJk3CJk8kEgzD3HvvvZCiUqnk8/kKhYLb7YYHgZ2DHNrtt9+OHDfP8y6Xa/fu3WvXru3s7AyFQjNnzly0aFFtba3NZuP37du3YcMGXGEqlcJgrEwm4/P5RkZGcrmcx+OZMGHC4sWLP//5z8+ZM4fm+yDNzz///MMPPwwnAW6eLMvRaPTKK6/EpdLAGtazWCxu3br10UcfVVXV6XSWSqXa2tq6urqlS5fSoNncbRS/9Pf3P/XUUxs2bNi4cWMmk7FaraIoCoJgsVh27NjR1NQ0Z86cpUuXLl26FGWhpVLJ6XRqmrZr165169ZpmhaNRuEE1tbWXnvttbW1tWaHCq7C008/vWHDhoGBAVVVLRaLy+W69povMAJPWI4xdMIQ0ekgDDEUhRGFYi63+pmnt2zZwnFcsVj0eDyqrhuGMXnqlK985SvmmA0ejsvlymazGzduTKVSyWTS4XBA5t1uNxR8oVCAv+H1et1u96233rps2bLm5maMyTHfwyPusLq6umw2u379+qeffvq1114bGRlxOByBQACGzjCM1157TRCECRMmXH755Zdddpnb7YZGt1qt+Xz+pZdeWr169TvvvFMoFHDCFotlcHDwwIEDq1atYln23/7t30499dT29nbqeRYKhZ6enj/+8Y8Y+Fkul0VRbG1tPeeccw4fzJFKpTZt2vTYY48VCoVwOJxMJkOh0JQpU+bPn4834xp5ni8Wi4SQxx9/PJlMQtiOeL2FQqGtre2WW25B4gthWDabTaVSK1euXLVqVTQara2tBdaSyWTi8XgqlXrsscf8fv/UqVPvvffeGTNmOJ3ObDb71ltvxeNxURTRnqlSqUBfFItFl8tVLBb9fn9zczNCGFVVh4eH169fv3Xr1pNPPvmWW26Jx+O///3vN23aNG3atI6ODhaARjabLRQKpVIJMA6wNcMw6urqampq9u3b98ADDzz00EM9PT25XA5QCcMwsViss7NzZGTE5XKxLBsIBPx+fyqVeuutt7Zv3z40NERMzeCBFwUCAZfLJcuyz+eDlSuVSnDfsa1pWpCajt27dz/11FO//OUvN2zYoOt6c3NzfX29xWKBV+PxeHp6eh577LH/+q//+tOf/tTf308IoU4zsBqEBLADK1eu3LFjB7BHik8QQtavX//MM88MDg7abLbGxsaamhq4i4RjCUuIRSAMIRyrq4qsKoSQv/71r5s2bYJGgB2G9nr++ecxeJeiTBQ3MwwjlUqVSiWGYex2O/RCNptFVO3z+cLhsMfjgct91113PfXUU0BEaaByjEq+fD7/+OOP/+AHP/jTn/5kGMasWbPq6+tTqRSqMHw+n91uT6fT/f398AsA3Fmt1kql8sQTT3z7299euXJlPp9H1CTLMjx87FSr1XrrrbeuXLlyZGSEWgOWZQuFAmItGsAA7RgDSBBCfD4fyqI8Hg8iSbhVECfEY5AoURShbkRRpDHn4SsYDNIQlCJVXV1dV1555apVq0qlUk1NjaZpQ0NDqVQKtg7RGmJaKNxcLme320dGRtLpND0BvMfpdAJyRBCVzWZhRXief+211/r6+pYvXx4Oh3/605+uW7fuK1/5yjvvvAMeyaFHZbfbdV0PhUI8z0+ZMuXiiy++5JJL4IZJkoQBqa+99trq1avdbjfwcULIn//855deeqmtra1cLjudzqGhoUqlUlNTUy6XH3zwwbq6OkrpLxaLwPcQAeOJQhlAHeK+Q6PgI4lEAr/86le/euCBB8rlMoI/3L5oNEoI8fv9FosFuHw2m33ggQcefvhhivOi87jFYsnn8263GzFJKpW66667hoaGeJ5PJpO49q6urm9/+9sMwwQCAeykaDTK8zwn8OVymRBSyOfh7LGCkMnlCCE/+/nPrXZ7e3s7YgmbzVYuFhmG2bZt265du8zuK+JgsELhOFksFsR7Fovl3nvv/ctf/vLf//3f1157Lc4ce5Rl2YceemhoaAgGc4zRpncJp0cIuf/++3/xi1+MjIw0NDRwHJfJZGDMnU6nLMv5fB5Ci2cKNAgK5aGHHvrRj35E0cV4PE7NBdxF+KW1tbX333//XXfdBR+eQizQfRBFq9VKrejfsC+GAc4ej8cRx+MXRVFwMpR9a84Q8Dxvs9mAmZVKpUwm43K5oG6sVmuxWMRzr1Qq0EeiKG7evPmGG25QVXVwcJDneYQnwDYJIe3t7QcOHLDb7V6vF6lCGH+GYRRFcblc8NLhugeDQZhiwzCAszc0NORyOVVVI5HI+vXrb775ZkmSNm7cePbZZ2/fvv1Pf/rTD37wg1/96lcej4cHQGmxWOB4OJ3O88477/LLL7fb7V/96le//vWvHzx4sFwuJxKJpqamlStXfvGLX/R6vYDCXnzxRa/XG4lEampqIHhQlg0NDW+88cbWrVvnz58PtQrEliL3x/Be6M3F0V555ZXOzk4EgjU1NalU6uDBgzU1NS0tLQzD7N692+v1KopSX19PCBkYGNi4ceOGDRsWL158NHWuaVomk/nXf/3XH//4x4FAAPHonXfeWSgUABhYLBY4GzCDFpuVMITlMcealIulUDj8140bI5EIwzBDQ0PhcDifz2ezWavVqmsaz3J/+MMfFi1aBJANYCOg1MPRVMMwzjrrLLfb3dDQMHPmTJvN9pOf/CQejwPzTCaTu3fvnjJlCu42SidgD+nNhNz+5S9/ef755yORiM/nQ64PHB+n0+l2u71eryiKxWIxEomMgRbfeeedDRs2JBIJv9+P4CEYDA4ODvp8PlEUOzs7W1pa/H5/IpFAuLVnz57nnnvuM5/5DCKff0x/CK/X63Q6//3f/93v99fW1lYqFZvNBp8QhY+GYXR1dd133319fX3wdTmOGxgYcDqd55577qJFi9xuNzrM7Nu3r7OzE1ET8k6xWAxGolwu+3y+VCpVU1Nz2223LVmyJBaLOZ1OqA8EV4SQ+vp6h8Oh63p/f7/b7UZOxefzlcvlCy644O233+Zxa6Dq8Oxp8iscDp9zzjk//OEPy+XytGnTksmk0+lMJBJou/H2229v2rTJ7/cDRvd6vTNnznz55ZddLhfHcQcOHHj66afnz58PHWBOcSJndTSJotA27PJvf/vbgwcPKooC15YQ0tHRcfLJJ8+bN0/X9Y0bN77zzjtw1fL5vCRJe/fuXb169eLFi4/2eDweTzwe37Rp00MPPfSNb3xDFMUf/ehHL7/8MoVEoVxg8RVFYVhWUmRO4LF3KrJkc9h/s/K3yWQSAkMIOe2009atW+fzeJPpFM/zzz333HXXXTdnzhyKxaNYld4EChABpahUKrW1tTU1NcuWLXvkkUdsNpvP50smk/l8fu/evXCK7HY78GhZlikdDoq2XC4/+eSTBw4cgD4GKxyx8uzZsz/1qU9Bng8ePPjss8/u2bNH1/VEIlFTU8Pz/AsvvPDWW2/hcQiCEI/HnU7n+eeff+qpp9pstrVr1yaTyb179wJisdvte/fufeSRR84991yKxHzU4pRMJtG0bP78+YIgOBwOnHxDQwOgcKTFAHugFBIYQ0dHxznnnHP11VdPmDABcTWO1tnZuXXr1traWjzlfD7v8XhyuVy5XA6FQpIk2e32FStWQKfTjDA8plwut3fvXkmSEPy//PLLXV1dLpfrvPPOQ6NcWZZ54Iawy0hc5HK5YrFIgTgkH61W665du6ZMmYJqZ1EUH3nkEWS7PB5PqVQ6/fTTr7jiiueee66lpQXXvG7duptvvrmhoQGJDkSQCGmO/STo/yKUh7dttVoTiYTL5fryl7985plntrW1sSx7+eWX//KXv3zkkUdyuVw+nw8GgzzPv/nmm9FodMy4B3O8UVdXl8/nf//73y9dulTX9fvvvx8wIDxDURQTiYQgCF6vVycGZsWLggjGmtfn6+vr27BhA50jVqlUbrzxxnQ63XOwWxAEnZBCqfjHP/5xzpw5xWLRbrebHSTzhUOoBEGAqIyMjLzxxhvpdLpYLEaj0YaGhubmZgAtMCkw7HBFcChIaSQS+ctf/gJIg+d5SZKampouvvjiFStW1NXV0QxeTU3NrFmzoLlramrw7Zs3by4Wi6FQiGEYSZJUVV24cOEdd9zR1tZGCPnsZz/77LPPfvOb34QjAOW4ZcuWSCTS2NhoJtl8dKumpkYURbBtaKt0PEdMwkaJ/rp16yAMHMfF43Ge56+99torr7wSdx4IhNVq9Xq9S5YsWbJkCaUpIoNK4WVFUcrlMpKTECd4GX6/HzK2YMGCn/3sZ4ODg6VSqa2t7Zvf/OZNN920devW5ubml19++e677+YzmQzHcRBupLGcTicUtsVi+f3vf8/zfENDQ29v78SJE61Wa11dXalUisVir776qtVqLZfLiOTOO++8U089tbW1NZfL6bru9/v7+vrWrFlz00032e12hF4QxTGMh6MlHAGqpNPpmpoaZIc0TWtqarrgggso+FtTU3PFFVe89NJLPT095XK5qakJ5nhgYOBoEhWPxzs6Ol5//fX29vaVK1du3boVKjCZTNbV1YFjQnPhDMOohiYIokGIrMoWXiSErHrsd9l8TtM1r8NezBeaGhtPXrjwuuuuu+6LX3J7PbqmBYPBF1988YYbbsC+pISjMeKEn/AO+vv79+7du3HjRrfbjSTpgQMHli5dOnfuXGwI5CJTqRScAjh1LMtWKpX+/v5oNAqSBLLVQD4hqAj9gStCBSiKAj2YzWb3798viqLL5Uqn0/BKvv71r7e1tSFBHwgELrrookcffbS7u9tiscAvUhSls7MzHA7juX/UEoW6RlEU/+Vf/gX0H7i7SLosWLAA0NTOnTsRX0EBNTU1nXnmmRCnVCrFMIzP56NSVCgUaPbc4/Gk02kQlABUFIvF//iP/7DZbF6vV5KkkZERv99/wQUXIIEkSdIdd9zxr//6r5dddtmCBQvK5fJ99933m9/8Zv/+/S6XKxgM8k6nE4oNMYymaTt27HC73ZlMZufOnbt370ZuGAEGzL0sy08++aQsy2CCpNPpqVOnLlq0iBBy/vnn/+QnP2lpacnlcgzD/O///u+ll14aCAScTif0MXTh35UoAMr9/f0wm8gt+v3+CRMmUHEql8sMw3R0dNTX1wNpwKnixI525MWLF2/fvt3r9drt9j/84Q+apjU2Ng4PDwNYHx4ehsOJJOChlo4MxsEbqqYWCoWnn35aFMVMoQjcfPny5bqinHv++TDCyPFGo9FVq1bdddddcAaIaf7sGBu1YsWKUCjU398fCAS2bt1qGIbNZqutrZ01a9aKFSumT58O1xFwHzQleDqA4JAUpgQlAGgtLS0dHR0cxyGyp+wWYDnmzRqLxQRBANGO47jW1tapU6dCVSNY93q9Z5555kMPPQSKrcfjkSSpp6cHUv0PmOpZX18PMvEzzzwD76uhoSEajQqC4PP56uvrGxsb33nnHcQFSED7fL5QKITQWlXVPXv2PPnkk319fR6PBzBsTU3NZZdddtZZZ8E1y2azdrvdYrEgV6Sq6hNPPJHL5YLBoN1uB/9j6dKlMFkwDwsWLNiwYcO8efOsVuvIyAj6VN99992CIPBOp5NhmGKxCIw1nU6/+OKLf/zjHwOBQE9Pz8SJEwcGBgYGBoB6n3vuuajfXL16NZgauq7bbLbly5f7/X5VVS+44IKVK1eCo2Cz2fbv3//iiy9eccUVuDY89VKpZI4ryFHq1axWazqdttlsFFoEtEpG+/JA/nFTABgC+YE7e7Qjf+ELX/jxj3+MkLRQKHR0dIyMjNjt9rlz5y5YsGDfvn3AjpAC5jiOZXlJly2sKAgWVZWffvaZnr4+t9OJQKKxsXH58uWKolh44bOf/ezTzz7DiyJ4X6+//jp1Po/If4NERSKRVCqFdD7sD7gzX/rSl2666Saa0aK3FFEZhfigNaGtRFEsl8uapgHAwP+C8WgGZhDKMgxTKBRwP4GkAY0EyRDaHaA2yE1I+gOiBCkOCaiPWqJQbQC6FvaPxWKx2Ww8z0+cOBHaCrEJEsoIXihXiOf5VCr10EMPud1uv99fKpWAMcycOfOss85CHEEnAsOxROYAEAiSzvF4vFAo5HI5m82m6/rChQsXLly4ffv2F1544bXXXguHw7NmzXK73bhpLIB2OBvgcZTL5Xw+39fXFwwGu7q6bDZbMBisr6///ve/f+qpp6ZSqYGBgb1790J3ZjKZUCi0dOlSPK3p06efcsopsJ4QjPXr12cyGTPgK0nSsRmfiNzg/CCcQ/YGeToa3AN1hVBRghlcXlDjj7imTJnyrW99CymImTNnwjoJgnDJJZecddZZLpcrn89DHx+SKEIqpTJDDJYQohsvr3+JYZhKpQKFN2vWrI6ODovdXikVr7n2C8AGkAHL5/Ovvvoq0IvDvSOKktXU1ASDwdbW1nw+j+GZLperv79///79pVIJWQdgj9AsuDSGYSBUDocDJiuTySC/BPmB703BaH10sSyLjAX+Fz2JYJFQHKGqKuJJSrPs6emB6fN4PMViEYLNMAxU+0ctUeB9I3cCNYosCEozAKw3NDTEYjEA7oqiUA+lXC6jdL++vl4QhGw2i8wNmAa4fMDxUBPQMggsHQ5HOp0uFApUXyM3Bfeqr69v1qxZN954449//OOrr7562bJlJ598ck9PDyGE9/v9lA4MTSCKYn19Pcdx3d3dc+bMaW1tnTNnzqWXXgqHwe/333333YZh1NbWDg0NSZI0e/bsCRMmAKZjWXbJkiWvv/66z+fr6emZNGnSm2++uX379mXLlsEJASoI4ib4GclkErkjynTEBTscjjPPPPNrX/taY2MjcDykL3bs2DFz5kxYPLAKX331VQgeYM233noLLii0NcBWHFCSpHw+f9VVV7355pvIyns8nnw+/9nPfvb666//7W9/C90GjeXxeOSKxBHisdp5wuQL+T179jy/Zo3NZhN5QVXV9vb2pZ9eRliGGIbV4QgEg/NOPvmdHdsLhUJLS0tPT88jjzxy2WWXgV+D+0PJ1wgmRVF87rnnmpqaent777nnnqeeegqgpdVqfe6550Kh0He+8x1qkynEB62E0JcQctJJJyH9hQ2kquq2bdv2798/f/58ym3N5/OwNjSmKpfLCxYsAEMiGAyWy2WWZTs7O7u7u6dMmQJSotVq3bZt28GDBxFdlMvl2tragYGBU045BRwU1KdBCJHhoAkDjuOSyaTb7YbmRZIN4hEKhQYHB0FhOSJFGLg8pcZDef3iF78AMRzPXVGUuro6xIrxeNzv92NTwcvt6+t76aWXzjjjDCA3DofD5XIdPHgQWwibEDcTUTSO6Xa7E4mE2+1+5JFHEG7AaDMMA+cTyBAhpKWlhbrQNGJH2Mx3d3cDCIaX39jYeOONN55zzjlNTU0gVmHf06tdu3YtMnTDw8N4SD09Pd///vehNZ1O586dO/P5PFT1gQMHnE7n008/vWzZMlmWgWCihqempqZYLCJrRncJNJDNZsPuZximra2tq6urubnZbrcnEokNGzb86U9/qqurw2UMDQ395Cc/QckNOB/19fVLlixBwAZNhiIUGDSHw1EsFnmev/DCCw8ePNjf35/P56dNmwb/Ch+hNNBDtHFV5VmuVCxaRctvHnk0GKjJ5/MWhyUajSaTyf/93//t7OwErVFRlF2duy0Wi9/vz2azLMsmEol169YtW7aMktyh+/EgIWDY8Tab7Wtf+9rBgwcPHjwIZufw8PDatWsvueSSlpYWIFp+v5+SDKiRhwbs6Ojo6elxu90ul2t4eHjLli3PPPNMbW1tc3NzPB4PBoN4gqVSaffu3aIozpo1C2HSSSed9M477wiCMDg42NTU5PP5fvazn916661TpkxBtv3111/v7OyMx+NutxuBa01NjSAIoHsjuIX7B5+cwhUgPVDifzqdhrePN8Atp0QQJKMpDRxOKSIcGA2n0zlt2rS6urojFuYgztmwYYPP5+vv74dqHhwczGazkiRddNFF559//iuvvPKLX/xi586d2KUw0VAH2BhQWw6Ho66urq6ujk45ONxh/jtV8a2trXV1dSgOKRQKuEeTJk1CpI67gJAXkMsf/vAH3F84JLqu9/X1bdu2zW63VyoVZOhDoZCmaS0tLVD269evHxoawjOA+4d0uK7rLpcrFAoBCYBUgz9aLpetVms4HL7qqqv+7d/+Ddlnr9dbLBaffPLJN998s6amxuv1RqPRPXv2QAAmTJgwNDQ0MDDwuc99DkYAqCsytjSSwd46//zzOY677rrrPB7PV7/6VWgXmBHYE8CStJbB4XD09vb++c9/hg9QLpfr6+sLhcL+/fu7urpApUdiMZfLQRHa7fZ8Pr9mzRpEwHAIRVG0Wq0Ie8ycHbfbHQqFLrrooh/+8IfI4dbW1iaTybfeemvSpEl49vDlcP40KgOsevbZZz/xxBMg18CM/PznP+/q6jr//PNPOeUUVMr09PSsW7cOBjwcDodCoWKxeMYZZ+zYsQPRgiiK/f39PT09fX19LS0tsiwjn14qlUKhkNVqHR4edjqdZ511Fg0OFUUZGBjQNM3r9cLfBoGI53m73Y48ZCQSaWpqCgQCYBLquo7Bu+FwmOM47GOPx4OdOjg42NjYCLULTp3L5YK/QPkiEGxolmQyKYqixWJZvHjxs88+K0kSMrDd3d133nlnZ2fnrbfe6nA4enp6GhoaYNnAOaa8ECj0bDYL0BsEMYZhwN9HSSvyPdRV/jsSheyHLMvwyEF6p0EwpUUiztuzZ8+mTZtyuRyApng8Dt8aLAqqOEVR3LVrV2NjI4zSwMDAunXrrr766mKxCD0NtxU3bnBw8K677vrBD34AqSuVSsFgUNO0O+644/Of//xpp5326quvbt682e/3A0zLZrOyLCeTSXyWUnvgKkyYMOHMM8+kZAhaLQcvAnm2SCRSX19/7rnnXnDBBQ0NDcuXLwfzEqcH1wV6lPpRdrt95cqVsDAMwyBooSgZXDKQ2VFOBi1YKpW2bNnS3d0NWh0q9uFFAMDEvkwmk2AAff7zn//Nb34DrwyJ2vvvv/+f/umfCCEYY+HxeKAaaBjGsmxtbe3555//xz/+EZBGoVCAp7R169YXX3yxvr4euQdw2wzDOOecc6Dd3G73JZdc8uyzz+7btw8PmmGYpqamAwcOQE8hMEMyqlQq5fP5SZMmXXnllZCoVCrldrvb29txq1OpVGdn57333rty5cp0Oq2qKijzbrf7jjvuuOSSS0BrQsSradqmTZv27NnzzW9+E7FAMplsbGx0OBy/+tWvFi1aROuFURfDcdzatWsbGhqg5gRBQM4QATwh5OKLL/7zn/+8bdu2WCxGqRWrVq164YUX5s6d297e3t3dvXnzZpvNBvQchEnILcwDQG/smc2bN8+cORN3Eu4uIeTUU099L01meLi8iL2QLHK73cA06FXRHOWjjz4qy3I4HEZUarVaP/e5z8HLjMfj0Ohw3oA/UhfuySefvPTSS+12u8PhCIfDhwrUBcHhcDQ0NOAyvF6vx+Px+/3g4E6fPt1isbS3t1944YUbN24EhCCOLmxun89ntVqh6nbv3l1fX//Vr3715JNPNhdawxsxDAPcx1QqtXDhQpzAPffcAzTfbrc7nU6Xy4W4CzsV2Q+oqKGhoTVr1sDD0XW9tra2vr5+7ty5SFm4XC5gr8jOPfLII9igLMtGIpGXX375uuuugxhAC8IgwEmDbkKGNxwOr1ix4t5777Xb7W632+PxoCQB8QDqAyCE1PfAA549e/b111//xBNP7N27t6mpKRQK4eYj0USp9IhqYrFYNptF97ympqbLL7/8pz/9KQqrmpqawHmDzUkkEgjqJEnK5XJtbW3Lly8/9dRTKcxot9t7e3sBCVgsFpQzQDd5PB4AGLjV8DIge8gowBtErgL3GbVbUC6US+XxeGRZzuVyP/vZz4BLwWMKhUI2m+3ZZ58FRu12uy+88MLBwcF4PB6LxdDJDFUUq1evtlgsoOrV19eDGg6D4XA4IpFIMpmUJAmgTjqd3rp16z333AP3G3xc7MP//u//njhx4t+3UQD6oAkymQxtCoUAGqYJ4hSLxVBMgUA2kUjMnDnztttug8NNYTc8b7/f/8ADD/T19QGBePHFF9evX3/xxRcjBkin083NzdlsFrxMbD5kMOF/U66N2+2+/vrrQbQZHh6Gx4UmMKqqNjQ0FAqFgYGBcDg8d+7cSy+99PLLL0eoCj0KTj4Y6EinwtxDJ6FXMIXa8eBpEwgIKm7FmjVrent74RIMDw83NjZ+6UtfWr58OUwH8qrUc16/fn1vb6/VakUVyeOPP37ZZZfRAttSqYQYF34pvcl4xitWrPjpT3+qKIrdbofZ/93vfofIEDcE509dIPxptVq//vWvZzIZxKV9fX2xWMzhcEyZMmVkZASPBpVzwWCwra0NriPgqKuvvlpRlLVr165bty4SiYRCIdhzcycMu93e0tJy6aWXrlixArxYl8uFyBbIFq05B/bAsiz0Ohy2cDgMUBFwGaoNoO+BZNCiKV3X4/F4a2srkGefzwe0GR5pLpcD01/TtP7+fjCkKSviS1/6kiiK9957L17p6enRNK2+vt7r9eJRQmAymQzAd8phDwQCiUSC9rdgWXZoaKi+vh4RVyKRyGazoP+9p+5iiUQC0S3Up8PhoJAonjFQIEmSHn/88Xg87nA4GIZBDnfp0qXYlNgfAACo1gRTE3QewzCefPLJxYsXoxoHTHsE65Bhm81mt9tTqRQQW2zc1tZW3LXLL7/carWuXbt23759uVzO5/PV1NT09vYODw97PJ76+vpTTjllxYoVF110EZ5iMBgsFAo0LwH+Mq0myGQyQB3AlkIaB32dBEFAOAQYCoalv79/48aNqGkXRTEYDDocjpNPPpnmW+FVUorQokWLUGJMg5NXXnkFBWA2m42C+5qmmbnkUMZtbW0XXnjh/v37e3p68vl8bW3t7t27d+zYMWPGjDHl4sjP4NHgcu68884lS5b88pe/fPvtt0Hne+utt+rr60GThXMxa9as9vZ2M4MkGAxed911EydO9Pl827Ztg3GAZw7fFX7mN77xjcWLF5uxAZo1pmR/WmEJ7xTlBdCA+XwewQJId+YWPbQeHg4LSLrTpk3buXNnLBZramoCQwLhGb7CMIz29nZBEKLRqNvtBoRmtVpPP/30uXPn/vM//zPg38bGRk3TDh48GA6HIVGCICBXAWYCSCdI98HJB4JXqVSQtAV8DVcCxu3vJgz4FStWAL2BgVZVdcqUKea+hHiu4LB84QtfqFQq6XR68uTJfX19V199NVhVFH/EFmQYZtGiReedd15NTc3Q0FBjY6MgCFu3boX4TZ8+/brrrqOgKsokQTGGa450c21tLZgjkMAbbrjhkksuiUaja9as2blzJ8uydXV19fX17e3ty5cvb2xshN4FfRNEKoZhTjnlFFEUQ6EQzEgqlYJ7CfcD5wONa7PZZs+efe6559bW1gJUKBQKp512GtzCiRMngklYKBQmTJiQy+WmTZuGXkW0WJW2qfnKV77S2NgYiUTwULu6uvL5PDT9kiVLoDKQWfJ6vQjlobxgsv7P//k/f/jDH/7pn/5pZGQEYpZIJPAGVElDfmjGk7LdGIY566yzTj/9dNTw9vX1wRtva2urq6trb29fuHBhR0cHThX3H36szWY788wzlyxZcuDAgTVr1mSz2f7+/kKh4Pf7J06cuGTJEhquILBB8ophmKlTp1511VU4bRhw8C2Qk/D7/YqixOPxKVOmuFyuefPmNTU1oQQOpUrQ5i6XixIXYRsNwzjjjDPmz5/vdrthtXw+HzWDUECU3QsKOepl6uvr6+vrH3744Xw+/8wzz2zcuJHGcm63u76+vqWlJRQKtba2Tp8+HbvL4/GcffbZHo/H5/Pl8/lisQieQ21tLcQVTlahUICa/rs2ivkAhHzU8IxpAE/BNKqujl1z+gFamTIMk06nfT4fzVwhy3SM80ToBcSWVvJQZU9bmpnV7eG1ok6nM5PJIPCAPadACNQbrTP9ZPbvxnnCj6Ug4dGeO51TSMmNf7exWXX9v0oU1RawlQBJARVSYihtkPRhtQuFf1gul6EIodGPDbwgCjqcKQNd+B7n6kFoqagMDQ3BiQXGSjdoKpUCCvJJmy9G1Z/52VE+e3V9/BKFmhxzZ11qnczdd/Hwjlhm9/9C8aLON9zfYxgo2tyQqlvIOYWqUQCCKmBaT3aMq6ZJKnPfNjjxqLk6Gtv9411jWschN3CMUbm0UR4lwVSF5CO3UdRfQgl+uVwOBAKIo6ikHepY+6E+D4D4NFcGxOxoX2Emp6IOnIKKoN6YiSDHliXqE4JwzbJsb28vSh5o7hh12vl8Ht75J2pRu2Tu3lFdnxSJovNYjx0zfOgRBZqEWK1W81zX9zJKGZ0MKLdljNGjnQaOYe7o6GU01gJbH11BwfZHAx3kcI/WKPfjXebOvkg0H83ppfcTlorCHlUv8aOSKDo30vxid3c3aCbU/aPtez6shZAMPyFdfzeOokG5eTegRZvVakUg9N5PYGBgAKVZKMFAtdInU36OYaySyWQ0Gk2n00eL95AGoF3sOY5D58bDeW7VdWT0/P1+AJRQPJ5YLOb1erdt23b33Xf/8Ic/xAQUYurI/mGeKM8TQp588snLLruM0nCOYQlhl8y+H/qD/vrXv37iiSf8fj86tlUqlVgsdoztQpsA0y14++23v/LKK4ODg83NzSeffPJ3v/tdvMHcgfmTsyg4pCjK8PDw4OBgIpFAFHq094MJiXYJTqezpaUFXI3q+kgkChF5MBhkWRbdPxwOx969e8FxhERRu0ddxP/3lc1md+3a9aMf/WjhwoVgu5DRFlZHNr6H2Z9kMjk4OPjzn//8G9/4xtVXXw1qs8fjaW5upn7d4Qu5LF3XgWf8z//8z4YNG2644Ybp06e//fbb3d3dCCDBEvgEShQ10YlEoqenB714Qd062n0zc4u9Xm9zc7O5N391HXt9EMcMiVHYDXjkDMPE43FQzmHH4vE4eME0Z4eABHgg7QTU29tLDYi5eSKGWRFCkOxHOdD06dN//vOfg3ZIAyEqumS0eR3yxUiXoWoQ3+V0Ojdu3Dh37twvfelLwWBQlmWPx0NZfGS0QA2kT2JqNwnC6PDwMFR4Op2+/vrrTzrppP/7f//vjTfeCBqOmQBB84A4AtKRODdUpFIJxy9oeEQIOXjwoFkScPngdOIScLbd3d24RSCwoiep2cvFN+K2WywWWZa7u7u7urpQXIxxIbhSIP60PRPESdd10ALr6upmz55dW1v7j+kiduLaqCOupqYm5HZRP4yQY82aNVu2bLHZbBdddNGkSZOcTmd/fz86ZU+aNOmKK65obW0lhKxcuXLhwoW9vb2bN2+eMWPGhRde+MYbb8CPQv80sPVQkjB37lxVVVeuXAl64Z49exYsWLB8+XKkbrds2TIwMJBMJtPpNOgU1F69+eabb7zxBjrUnXPOOTabra+v77HHHhsYGFiwYMEpp5wydepUQsjIyAiox2+//XZnZ+dXv/pViAoIOCAKPvXUU5/97GcJIRMmTIDuf/vtt7/85S8jo/3UU0+1tLTMnz/fbrdv3rx5y5YtmUymra1t2bJlOMhTTz21Y8eOUqn06U9/+tRTT50yZUokEvn9738fCARWr1594YUXhsNhl8v1yiuvvPDCC01NTS0tLSjoYln23//93ydPnvzpT38aHbMpbQK0KXOLeSpjiUQiEonEYjFM9zB7DbT/PYQfLcQwj6y5uXnq1KmwzMeYOlNdYxb3ve9974MAGqb8Rj6f/81vfrN06dIZM2YAjgN35pZbbnnssccaGxv7+/t/9atftbS0OByOa665pru7m+O4J598cmRk5KSTTmIY5tprr43FYhs2bNizZ08sFmtoaLjhhhtSqRQ6GP/6178G2/Lll19+8MEHFy1aNDw8fOutt4LwEovF1q5dW19fX1tbu3379ttuu23btm2bNm3avXt3XV3dokWLstksAPdXX31169atgOnq6+ufffbZO+64Q1VVn8/3/PPP//Wvf50+fbrD4XjuuefuvvvudDq9Z8+eN998s7W1ddKkSeio6PF4FixYkEwm77rrLpTuTZ061W6379ix42c/+9mll14K/tSdd97pdDoXL1584MCB73znO9u2bfN6vS+++GJtba3Van344YcffvhhlmUzmczmzZvnzZvndru/+MUvRiKReDze1dW1ZcuWSy65pLe398tf/rLNZkulUhCzRCJx7rnnzp07t6ura/Xq1UuWLEGnb9q25fDmMISQnp6ewcHBSCQCoiPgHAS6dIwFsFNKpNI0LRQKzZgxg2bYqlmpj8FGoYUypgn6/f5oNLp9+/avfe1rV111FSHk5ptvBlv0Bz/4wcKFC3O53H/+53/29fWB+xiNRr1e73XXXTdr1qydO3fOmDGDZdmzzz77qquu4nl+ZGRk48aNV155ZTgcRv94FHied955S5cutVgsy5cvf+qpp0477bRHH310/vz53/ve91wu1/z586dPn46hDNDKn/rUpyKRyM6dO3/yk58MDQ397ne/u/nmm7/4xS9yHDcyMvL5z3/+hRdeuO2224C2n3HGGUuWLEFHSHw8EAiAP/GVr3xl6tSp99133/e//32O45YvX44K8Fwu19LSAvwDYf29997Lsuw999yzePFiTAqLRqMvvfTS8uXLv/Od7/A839/fHw6HX3nllVKp9D//8z/Nzc2pVOr0009/6KGHPv3pT3d1dX33u9+94IIL0NwU1QAXXXTRSSedFI1GW1tbUaZORrviwFJRJBYtQ/bu3YvGDKjWQftRJNngFuL9NLFbLpcbGhqmT58O3x781H9Ah5aqRB0BA0RNLmAlDG548cUX165dC2zwrbfe+ta3vrVw4cKtW7cODw+/+uqr6FUCh+qkk06aNWtWNps96aST6JwbeBoNDQ3o/Y86c8QV6XQ6EAjAJ5k1axbiqGQyOXv2bJvNhhkToVAIZSY4wylTptjt9p6eHtR4xmKxa6+9FmXw4XB42bJla9asueWWW9BpYObMmaC00o+jz26pVAqHw1dccUVHR8d//dd/3X333W1tbdALmMyFZkyBQKBQKLzyyivf/OY3Fy9erKoqauD2799/8ODB73//+6AaNjY2siz78ssvv/POO3fccQfK0txu98DAgM/nu+SSS+67774XXnjhe9/7Hgq3Pve5z91yyy2XXXbZF7/4RRildDqNQg/YHDJaGCZJ0vDwcDQaBSMRtAnUodFgiYzyaxF0YTU0NEyePBmCikxJVZw+HomC2svn8xh4YxiG1+v91Kc+tXjxYkVRwuHwwMCA3+//7ne/G4/H586du2zZst27dxNC+vr6MpkMAnc8+Gw2i12COqhAIABHH3WBUMY2m432JMHuLBaLV1999QMPPPDMM89EIpHTTz+9tbUVgoceNyi/a21t1TQNVGJQwh0ORz6fR1NBURQbGhqCwSDUfC6XEwQBRA2M9gCGnk6nTz755K997Wuf/vSngRBUKpVQKITjYON6PB6PxzMyMoLYrLGxEaRE0Ljo1ieEzJ8//5lnnvnWt76FsrympiYUtz/44IP333//888/f8UVV6xdu3bBggWTJk164oknnnzyyX379t1zzz2AgjAEAD1fEfKhD3Nvb+/Q0BCF9WA2WZZFF+5cLke7atEeSSDgg/YBQiBttHb4AJvq+tCwviMubB0UsTocDswU27lzp9frnTt3bqVSiUQivb29a9eu/frXv37zzTdjKwwPD7e0tGAsF6rKYQ1QMmCz2SAP8EaKxSI+BcgLU0PRgaRYLHIcd+GFF/I8P3fu3Icffvj222/3+/1A+VHASwhBU3yO40KhUKVSeemll2BYVFV97LHHYOvopENCCCpKEO6jlc+qVasefPBBn8+XSCQkScL4I1Sh7t27NxAIjIyMwJDm8/lly5Zt3LjxjTfeaGxsBEA/derUcDi8atWqeDyOL8rlcu3t7Xv37i0UCvPnzz/ttNOy2ezIyEhXVxfQjscff3z//v2rV6/etWuXYRg33XTT9ddfv3///i1btqCmKBAIxONxmgOsVCp9fX1dXV2JRILypMwVfnTCHwUkQfxtbGycNm0axAndqajMV2GJj8FG/ed//ucjjzwyMjKCYsytW7feeeedN9100/DwMKKRefPmLV26FG2i2tvbN2zYkE6nX3311XPOOWdg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"); }
+body{font-family:Calibri,"Segoe UI","Helvetica Neue",Arial,sans-serif; font-size:18px}
+@media (max-width:640px){ body{font-size:16px} }
+.slide{position:relative}
+.slide:not(.title-slide)::before{content:""; display:block; height:10px; background:var(--teal)}
+.slide:not(.title-slide)::after{content:""; position:absolute; top:24px; right:20px; width:148px; height:40px;
+  background:var(--logo) no-repeat right top / contain; pointer-events:none; opacity:.95}
+@media (max-width:900px){ .slide:not(.title-slide)::after{display:none} }
+@media (min-width:901px){ .slide:not(.title-slide) .shead{padding-right:158px} }
+.logoimg{display:inline-block; background:#fff var(--logo) no-repeat center / contain; padding:8px 14px;
+  border-radius:8px; height:56px; width:190px; background-origin:content-box}
+.chip{background:var(--teal)}
+.checkpoint{border-color:var(--teal); background:var(--check)}
+.checkpoint .plabel{background:var(--teal)}
+.checkpoint .revealbtn{background:var(--teal)}
+.checkpoint .revealbtn:hover{background:#0A6059}
+.reveal .ans{color:var(--goldtext)}
+.takeaway{border:1px solid #EAD9AE}
+:focus-visible{outline:3px solid var(--teal); outline-offset:2px}
+@media print{
+  .slide:not(.title-slide)::before{background:var(--teal); -webkit-print-color-adjust:exact; print-color-adjust:exact}
+}
+
+
+/* Sep 26 2026: wide tables scroll inside their own box at narrow widths (02 §7a) */
+.tscroll{overflow-x:auto; max-width:100%}
+
+figure svg{display:block; width:100%; height:auto; max-width:860px; margin:0 auto; border:1px solid var(--line); border-radius:8px; background:#fdfdfe}
+.cols2 > figure{margin:0; width:100%}
+figure{margin:12px 0}
+svg text{font-family:"Segoe UI",Lato,"Helvetica Neue",Arial,sans-serif}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<div class="visually-hidden" role="status" aria-live="polite" id="announcer"></div>
+<main id="deck" aria-label="Module 12 slide deck">
+
+<section class="slide title-slide" id="cover" data-title="Welcome" data-part="Start here">
+  <div class="wrap">
+    <p class="logobar"><span class="logoimg" role="img" aria-label="Palomar College — Learning for Success"></span></p>
+    <p class="eyebrow">ECON 100 &middot; Basic Economics</p>
+    <h1>Money and the Financial System: What Money Is and How Banks Create It</h1>
+    <p class="subtitle">Module 12 &middot; Money and the Financial System</p>
+    <p class="meta">Week of Nov 9 &ndash; Nov 15 &middot; Tuesday, Nov 10, and Thursday, Nov 12 &middot; 9:30&ndash;10:55 AM &middot; MD-304 &middot; Prof. Ishii<br> This deck is your Module 12 reading. Read Day 1 before Tuesday and Day 2 before Thursday.</p>
+    <p class="hint">Press <strong>&rarr;</strong> (or swipe, or use the buttons below) to begin &middot; press <strong>M</strong> anytime for the table of contents</p>
+  </div>
+</section>
+
+
+<section class="slide" id="howto" data-title="What this week covers" data-part="Start here">
+  <div class="wrap">
+    <div class="shead"><span class="chip">READ ME</span><span class="kicker">Start here</span>
+      <h2 class="stitle">What this week covers</h2></div>
+    <p class="lead">In Week 11, total spending moved the whole economy, and almost all of that spending is paid with money. This week, we look at money itself: what it does, where American banks came from, and how banks create most of the money people spend. We finish with how banks are supervised and what happens when a bank fails.</p>
+    <div class="cols3">
+      <div class="card"><h3 class="ch">Day 1</h3>
+        <p>Day 1 covers what money does, why a dollar bill has value, and how the money supply is measured. Then we trace American banking from its first national bank in 1791 to the Federal Reserve in 1913, and we read a bank&rsquo;s T-account.</p></div>
+      <div class="card"><h3 class="ch">Day 2</h3>
+        <p>Day 2 shows how a deposit and a loan create new money, one bank at a time, and how the money multiplier gives the limit. Then we cover bank runs, deposit insurance, who supervises banks, and the failure of Silicon Valley Bank in 2023.</p></div>
+      <div class="card"><h3 class="ch">Work it on paper</h3>
+        <p>Several slides ask you to fill in a T-account or answer a question before you reveal the answer. Keep paper and a pencil nearby. HW12b uses the same T-accounts with different banks.</p></div>
+    </div>
+    <div class="callout"><p><strong>Read Day 1 before Tuesday, Nov 10, and Day 2 before Thursday, Nov 12.</strong></p></div>
+    <aside class="notes"><span class="nlabel">Instructor notes</span>
+    <p>Reading-role slide. Day 1 is money and the history of banking. Day 2 is money creation and regulation. Monetary policy tools are left to Week 13.</p></aside>
+  </div>
+</section>
+
+
+<section class="slide" id="objectives" data-title="What you'll be able to do" data-part="Start here">
+  <div class="wrap">
+    <div class="shead"><span class="chip">GOALS</span><span class="kicker">Start here</span>
+      <h2 class="stitle">By Sunday night, you will be able to&hellip;</h2></div>
+    <div class="cols2">
+      <div class="card"><h3 class="ch">Ideas</h3><ul>
+        <li><strong>Name</strong> the three functions of money, and explain why fiat money has value</li>
+        <li><strong>Explain</strong> what M1 and M2 measure, and why a credit card is not money</li>
+        <li><strong>Describe</strong> how American banking developed from 1791 to 1913, and what each step changed</li>
+        <li><strong>Explain</strong> how a bank loan creates new money</li>
+        <li><strong>Explain</strong> why bank runs happen and how deposit insurance and supervision reduce them</li>
+      </ul></div>
+      <div class="card"><h3 class="ch">Skills</h3><ul>
+        <li><strong>Fill in</strong> a bank&rsquo;s T-account after a deposit and after a loan</li>
+        <li><strong>Calculate</strong> the money created by loans over several rounds</li>
+        <li><strong>Calculate</strong> the money multiplier from a reserve ratio, and the limit on total deposits</li>
+        <li><strong>Calculate</strong> the insured and uninsured parts of a deposit</li>
+        <li><strong>Classify</strong> a statement about banking as positive or normative</li>
+      </ul></div>
+    </div>
+    <div class="depth"><p><strong>&#9989; Big idea:</strong> Money is whatever people accept in payment, and most of it today is bank deposits, not cash. Banks create deposits when they make loans, so the banking system creates most of the money supply. Because a bank keeps only part of its deposits as reserves, a bank can fail when too many depositors want their money at once, and that is why banks are insured and supervised.</p></div>
+    <div class="vocab"><p><strong>Where this sits:</strong> Week 11 showed that total spending moves real GDP and the price level. This week explains the money that pays for that spending. Week 13 covers how the Federal Reserve and the government use their tools to shift aggregate demand.</p></div>
+  </div>
+</section>
+
+
+<section class="slide" id="glance" data-title="Your week at a glance" data-part="Start here">
+  <div class="wrap">
+    <div class="shead"><span class="chip">CHECKLIST</span><span class="kicker">Start here</span>
+      <h2 class="stitle">Your week at a glance <span class="small">(module runs Monday&ndash;Sunday)</span></h2></div>
+    <div class="agenda-due">
+      <div>
+        <ol>
+          <li><strong>&#128214; Read this deck</strong> &mdash; Day 1 before Tuesday and Day 2 before Thursday, about 45&ndash;55 minutes in total.
+            <em>Optional reading:</em> OpenStax <em>Principles of Economics 3e</em>, &sect;27.1, &sect;27.2, &sect;27.3, &sect;27.4, &sect;28.1, and &sect;28.2. OpenStax &sect;27.4 uses a required reserve ratio of 10 percent. Since March 2020, the required ratio has been 0 percent, so this deck uses the share of deposits that a bank chooses to keep.</li>
+          <li><strong>&#127979; Come to class Tuesday, Nov 10, and Thursday, Nov 12.</strong> Bring paper and a pencil. Work that you hand in during class earns completion credit.</li>
+          <li><strong>&#128221; Take the Week 12 Quiz</strong> &mdash; 15 questions drawn at random from the module's question bank, 5 easy, 5 medium, and 5 hard, worth 90 points per attempt. You may take the quiz as many times as you like before the deadline, and your highest score counts.</li>
+          <li><strong>&#9997;&#65039; Submit HW12a, HW12b, and HW12c</strong>, 10 points each. HW12a sorts four cases by the function of money each one shows. HW12b follows a deposit through three banks in the T-Account Explorer. HW12c matches three banking problems from American history with the laws that answered them.</li>
+        </ol>
+      </div>
+      <div class="duebox">
+        <div class="dhead">DUE THIS WEEK</div>
+        <div class="dbody">
+          <p><strong>Week 12 Quiz</strong><br>15 questions &middot; 90 points &middot; unlimited attempts &middot; due <strong>Sunday, Nov 15, 11:59 PM</strong></p>
+          <p><strong>HW12a, HW12b, and HW12c</strong><br>three assignments, 10 points each &middot; due <strong>Sunday, Nov 15, 11:59 PM</strong></p>
+          <p class="small">Everything is submitted in Canvas. Go to Module 12 in Modules.</p>
+        </div>
+      </div>
+    </div>
+    <div class="takeaway">This week has one deck, two class days, one quiz, and three homework assignments.</div>
+  </div>
+</section>
+
+
+<section class="slide" id="functions" data-title="What money does" data-part="Day 1">
+  <div class="wrap">
+    <div class="shead"><span class="chip">MONEY</span><span class="kicker">Day 1</span>
+      <h2 class="stitle">What money does: three functions</h2></div>
+    <p class="lead">Without money, people trade goods for goods. That is <strong>barter</strong>. A plumber who wants bread must find a baker who needs a plumber at the same time. Economists call that requirement a <strong>double coincidence of wants</strong>, and it makes most trades slow or impossible.</p>
+    <figure><svg viewBox="0 0 930 420" role="img" aria-label="Three functions of money: exchange, store, account."><defs><marker id="functions-ah" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B2A4E"/></marker><marker id="functions-ahT" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0C7C73"/></marker><marker id="functions-ahO" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a04a00"/></marker><marker id="functions-ahS" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#526171"/></marker><marker id="functions-ahG" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#166534"/></marker><marker id="functions-ahs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B2A4E"/></marker><marker id="functions-ahOs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a04a00"/></marker><marker id="functions-ahGs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#166534"/></marker></defs><rect x="30.0" y="30.0" width="270.0" height="360.0" rx="14" fill="#F3F6FA" stroke="#C9D3DF" stroke-width="2"/><text x="165.0" y="76.0" font-size="25" font-weight="700" text-anchor="middle" fill="#1B2A4E">Medium of exchange</text><text x="165.0" y="340.0" font-size="21" font-weight="normal" text-anchor="middle" fill="#526171">Used to buy and sell</text><rect x="330.0" y="30.0" width="270.0" height="360.0" rx="14" fill="#F3F6FA" stroke="#C9D3DF" stroke-width="2"/><text x="465.0" y="76.0" font-size="25" font-weight="700" text-anchor="middle" fill="#1B2A4E">Store of value</text><text x="465.0" y="340.0" font-size="21" font-weight="normal" text-anchor="middle" fill="#526171">Holds buying power</text><text x="465.0" y="366.2" font-size="21" font-weight="normal" text-anchor="middle" fill="#526171">for later</text><rect x="630.0" y="30.0" width="270.0" height="360.0" rx="14" fill="#F3F6FA" stroke="#C9D3DF" stroke-width="2"/><text x="765.0" y="76.0" font-size="25" font-weight="700" text-anchor="middle" fill="#1B2A4E">Unit of account</text><text x="765.0" y="340.0" font-size="21" font-weight="normal" text-anchor="middle" fill="#526171">Measures and compares</text><text x="765.0" y="366.2" font-size="21" font-weight="normal" text-anchor="middle" fill="#526171">value</text><g transform="translate(110.0,250.0) scale(1.6)"><circle cx="0" cy="-30" r="9" fill="#1B2A4E"/><path d="M-14,0 Q-14,-18 0,-18 Q14,-18 14,0 Z" fill="#1B2A4E"/></g><g transform="translate(190.0,200.0) scale(0.75)"><rect x="-46" y="-24" width="92" height="48" rx="5" fill="#E3F1EF" stroke="#166534" stroke-width="3"/><circle cx="0" cy="0" r="14" fill="none" stroke="#166534" stroke-width="2.5"/><text x="0.0" y="8.0" font-size="22" font-weight="700" text-anchor="middle" fill="#166534">$</text></g><line x1="225.0" y1="200.0" x2="262.0" y2="200.0" stroke="#0C7C73" stroke-width="4" marker-end="url(#functions-ahT)"/><path d="M240,241.5 L275.0,210 L310,241.5 Z" fill="#0C7C73"/><rect x="245.6" y="241.5" width="58.8" height="38.5" fill="#F3F6FA" stroke="#1B2A4E" stroke-width="3"/><rect x="268.7" y="256.9" width="12.6" height="23.1" fill="#1B2A4E"/><g transform="translate(420.0,230.0) scale(1.15)"><rect x="-30" y="-50" width="60" height="12" rx="3" fill="#526171"/><path d="M-34,-38 L34,-38 L38,40 Q38,50 28,50 L-28,50 Q-38,50 -38,40 Z" fill="#E3F1EF" stroke="#1B2A4E" stroke-width="3"/><circle cx="-12.0" cy="30.0" r="13" fill="#FBF3E2" stroke="#8E6612" stroke-width="3"/><text x="-12.0" y="34.7" font-size="13.0" font-weight="700" text-anchor="middle" fill="#8E6612">$</text><circle cx="12.0" cy="22.0" r="13" fill="#FBF3E2" stroke="#8E6612" stroke-width="3"/><text x="12.0" y="26.7" font-size="13.0" font-weight="700" text-anchor="middle" fill="#8E6612">$</text><circle cx="0.0" cy="0.0" r="13" fill="#FBF3E2" stroke="#8E6612" stroke-width="3"/><text x="0.0" y="4.7" font-size="13.0" font-weight="700" text-anchor="middle" fill="#8E6612">$</text></g><rect x="495.0" y="150.0" width="80.0" height="80.0" rx="12" fill="#fff" stroke="#1B2A4E" stroke-width="3"/><path d="M495,162 Q495,150 507,150 L563,150 Q575,150 575,162 L575,200 L495,200 Z" fill="#0C7C73"/><text x="535.0" y="185.0" font-size="22" font-weight="700" text-anchor="middle" fill="#fff">LATER</text><text x="535.0" y="250.0" font-size="34" font-weight="700" text-anchor="middle" fill="#1B2A4E"></text><path d="M701.8,146.0 L810.2,146.0 L828.2,170.0 L810.2,194.0 L701.8,194.0 Z" fill="#FBF3E2" stroke="#8E6612" stroke-width="2.5"/><circle cx="808.2" cy="170.0" r="4" fill="#8E6612"/><text x="757.0" y="178.6" font-size="24" font-weight="700" text-anchor="middle" fill="#1B2A4E">$8,400</text><path d="M701.8,226.0 L810.2,226.0 L828.2,250.0 L810.2,274.0 L701.8,274.0 Z" fill="#FBF3E2" stroke="#8E6612" stroke-width="2.5"/><circle cx="808.2" cy="250.0" r="4" fill="#8E6612"/><text x="757.0" y="258.6" font-size="24" font-weight="700" text-anchor="middle" fill="#1B2A4E">$9,100</text></svg></figure>
+    <div class="cols3">
+      <div class="card"><h3 class="ch">Medium of exchange</h3>
+        <p>Money is accepted in payment for goods and services. The plumber is paid in dollars and spends the dollars at any bakery.</p></div>
+      <div class="card"><h3 class="ch">Store of value</h3>
+        <p>Money holds buying power from today until a later day. A paycheck can be spent next month, while a bushel of tomatoes spoils.</p></div>
+      <div class="card"><h3 class="ch">Unit of account</h3>
+        <p>Prices are stated in money, so values can be compared. A car priced at $8,400 costs $700 less than one priced at $9,100.</p></div>
+    </div>
+    <div class="vocab"><p><strong>Money</strong> is whatever people generally accept in payment for goods and services and in repayment of debts.</p></div>
+    <div class="predict"><span class="plabel">Checkpoint &mdash; commit before you reveal</span>
+      <div class="pbody">
+        <p>A student saves $40 a week in a checking account to pay for a trip next summer. <strong>Which function of money does the account serve?</strong></p>
+        <button type="button" class="revealbtn" aria-expanded="false">Reveal the answer</button>
+        <div class="reveal">
+          <p><span class="ans">Store of value.</span> The student is holding buying power until next summer. When the student pays for the trip, the same dollars serve as a medium of exchange.</p>
+        </div>
+      </div>
+    </div>
+    <div class="takeaway">Money is a medium of exchange, a store of value, and a unit of account.</div>
+    <aside class="notes"><span class="nlabel">Instructor notes</span>
+    <p>OpenStax &sect;27.1 also names a fourth function, a standard of deferred payment. Mandel calls the unit of account a standard of value. The course uses the three names above.</p></aside>
+  </div>
+</section>
+
+
+<section class="slide" id="fiat" data-title="Commodity money and fiat money" data-part="Day 1">
+  <div class="wrap">
+    <div class="shead"><span class="chip">MONEY</span><span class="kicker">Day 1</span>
+      <h2 class="stitle">Commodity money and fiat money</h2></div>
+    <div class="cols2">
+      <div class="card"><h3 class="ch">Commodity money</h3>
+        <p><strong>Commodity money</strong> has value of its own as a good. Gold and silver coins are examples. Prisoners of war in camps during World War II used cigarettes as money. A paper note that can be exchanged for a fixed amount of gold is <strong>commodity-backed money</strong>.</p></div>
+      <div class="card"><h3 class="ch">Fiat money</h3>
+        <p><strong>Fiat money</strong> has no value of its own as a good and cannot be exchanged for gold. It has value because the government declares it legal tender and because people expect others to accept it. A $20 bill is fiat money.</p></div>
+    </div>
+    <div class="tscroll"><table class="house">
+      <caption>How the U.S. dollar became fiat money</caption>
+      <thead><tr><th scope="col">Year</th><th scope="col">What changed</th></tr></thead>
+      <tbody>
+        <tr><td>1933&ndash;1934</td><td>Americans could no longer exchange dollars for gold. Foreign governments still could, at $35 an ounce.</td></tr>
+        <tr><td>Aug 15, 1971</td><td>President Nixon ended the exchange of dollars for gold by foreign governments. Since then, no one has been able to exchange dollars for gold at a fixed price.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="predict"><span class="plabel">Checkpoint &mdash; commit before you reveal</span>
+      <div class="pbody">
+        <p>A $20 bill costs the government only a few cents to print, and it cannot be exchanged for gold. <strong>Why does a store accept it for $20 of goods?</strong></p>
+        <button type="button" class="revealbtn" aria-expanded="false">Reveal the answer</button>
+        <div class="reveal">
+          <p><span class="ans">Because the store expects others to accept it.</span> The store can pay its workers and its suppliers with the same bill, and the law requires that the bill be accepted to pay debts. If people stopped expecting others to accept dollars, for example after years of very high inflation, the dollar would lose its value as money.</p>
+        </div>
+      </div>
+    </div>
+    <div class="takeaway">Fiat money has value because people trust that others will accept it.</div>
+    <aside class="notes"><span class="nlabel">Instructor notes</span>
+    <p>The cigarette example is R. A. Radford, &ldquo;The Economic Organisation of a P.O.W. Camp,&rdquo; <em>Economica</em> (1945). The gold dates: the 1933 orders and the Gold Reserve Act of 1934; the August 15, 1971 address.</p></aside>
+  </div>
+</section>
+
+
+<section class="slide" id="measures" data-title="Measuring money: M1 and M2" data-part="Day 1">
+  <div class="wrap">
+    <div class="shead"><span class="chip">MONEY</span><span class="kicker">Day 1</span>
+      <h2 class="stitle">Measuring money: M1 and M2</h2></div>
+    <p class="lead">The Federal Reserve measures the money supply in two ways. <strong>M1</strong> is currency held by the public plus checking and savings deposits. <strong>M2</strong> is M1 plus small time deposits, such as certificates of deposit, and retail money market funds.</p>
+    <div class="cols2">
+      <figure><svg viewBox="0 0 900 610" role="img" aria-label="Bars: currency, M1, and M2, September 2026."><defs><marker id="measures-ah" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B2A4E"/></marker><marker id="measures-ahT" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0C7C73"/></marker><marker id="measures-ahO" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a04a00"/></marker><marker id="measures-ahS" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#526171"/></marker><marker id="measures-ahG" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#166534"/></marker><marker id="measures-ahs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B2A4E"/></marker><marker id="measures-ahOs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a04a00"/></marker><marker id="measures-ahGs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#166534"/></marker></defs><text x="450.0" y="34.0" font-size="23" font-weight="700" text-anchor="middle" fill="#1B2A4E">U.S. money supply, September 2026 (trillions of dollars)</text><text x="200.0" y="136.0" font-size="26" font-weight="700" text-anchor="end" fill="#1B2A4E">Currency</text><rect x="220.0" y="100.0" width="59.5" height="52" fill="#1B2A4E"/><text x="289.5" y="136.0" font-size="24" font-weight="700" text-anchor="start" fill="#1B2A4E">$2.4</text><text x="200.0" y="246.0" font-size="26" font-weight="700" text-anchor="end" fill="#1B2A4E">M1</text><rect x="220.0" y="210.0" width="59.5" height="52" fill="#1B2A4E"/><rect x="279.5" y="210.0" width="438.1" height="52" fill="#0C7C73"/><text x="727.5" y="246.0" font-size="24" font-weight="700" text-anchor="start" fill="#1B2A4E">$20.1</text><text x="200.0" y="356.0" font-size="26" font-weight="700" text-anchor="end" fill="#1B2A4E">M2</text><rect x="220.0" y="320.0" width="59.5" height="52" fill="#1B2A4E"/><rect x="279.5" y="320.0" width="438.1" height="52" fill="#0C7C73"/><rect x="717.5" y="320.0" width="83.1" height="52" fill="#8E6612"/><text x="810.7" y="356.0" font-size="24" font-weight="700" text-anchor="start" fill="#1B2A4E">$23.4</text><line x1="220.0" y1="90" x2="220.0" y2="420" stroke="#C9D3DF" stroke-width="1.5"/><text x="220.0" y="445.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#526171">0</text><line x1="344.0" y1="90" x2="344.0" y2="420" stroke="#C9D3DF" stroke-width="1.5"/><text x="344.0" y="445.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#526171">5</text><line x1="468.0" y1="90" x2="468.0" y2="420" stroke="#C9D3DF" stroke-width="1.5"/><text x="468.0" y="445.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#526171">10</text><line x1="592.0" y1="90" x2="592.0" y2="420" stroke="#C9D3DF" stroke-width="1.5"/><text x="592.0" y="445.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#526171">15</text><line x1="716.0" y1="90" x2="716.0" y2="420" stroke="#C9D3DF" stroke-width="1.5"/><text x="716.0" y="445.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#526171">20</text><line x1="840.0" y1="90" x2="840.0" y2="420" stroke="#C9D3DF" stroke-width="1.5"/><text x="840.0" y="445.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#526171">25</text><rect x="220" y="470" width="22" height="22" fill="#1B2A4E"/><text x="252.0" y="488.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1B2A4E">Currency</text><rect x="220" y="502" width="22" height="22" fill="#0C7C73"/><text x="252.0" y="520.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1B2A4E">Checking and savings deposits</text><rect x="220" y="534" width="22" height="22" fill="#8E6612"/><text x="252.0" y="552.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1B2A4E">Small time deposits and money funds</text><text x="450.0" y="590.0" font-size="18" font-weight="normal" text-anchor="middle" fill="#526171">Source: Federal Reserve, H.6 release, through FRED. Seasonally adjusted.</text></svg></figure>
+      <div>
+        <div class="card"><h3 class="ch">Most money is deposits</h3>
+          <p>In September 2026, M1 was $20.1 trillion, and currency was $2.4 trillion of it. So currency was about 12 percent of M1, and deposits were most of the rest. Most money today is a number in a bank&rsquo;s records, not paper.</p></div>
+        <div class="card"><h3 class="ch">A credit card is not money</h3>
+          <p>A credit card arranges a loan from the card company. The card company pays the store, and you repay the card company later from your checking account. The card is the agreement to borrow, so the card is not money. A debit card is not money either. It moves money that is already in your checking account.</p></div>
+      </div>
+    </div>
+    <div class="predict"><span class="plabel">Checkpoint &mdash; commit before you reveal</span>
+      <div class="pbody">
+        <p>You move $500 from your checking account into a one-year certificate of deposit. <strong>What happens to M1 and to M2?</strong></p>
+        <button type="button" class="revealbtn" aria-expanded="false">Reveal the answer</button>
+        <div class="reveal">
+          <p><span class="ans">M1 falls by $500, and M2 does not change.</span> The checking deposit is in M1. The certificate of deposit is a small time deposit, which is in M2 but not in M1. Because M2 includes both, M2 is the same.</p>
+        </div>
+      </div>
+    </div>
+    <div class="takeaway">M1 is currency plus checking and savings deposits, and M2 adds small time deposits and money funds.</div>
+    <aside class="notes"><span class="nlabel">Instructor notes</span>
+    <p>Since May 2020, M1 includes savings deposits, so M1 jumped that month by definition. OpenStax &sect;27.2 explains the change. Data: Federal Reserve H.6 through FRED, series CURRSL, M1SL, and M2SL, September 2026.</p></aside>
+  </div>
+</section>
+
+
+<section class="slide" id="firstbanks" data-title="History: the First and Second Banks" data-part="Day 1">
+  <div class="wrap">
+    <div class="shead"><span class="chip">HISTORY</span><span class="kicker">Day 1</span>
+      <h2 class="stitle">History: the First and Second Banks of the United States, 1791&ndash;1836</h2></div>
+    <p class="lead">After the Revolutionary War, the new country had war debts and many kinds of state money. Treasury Secretary Alexander Hamilton argued for one national bank that would hold the government&rsquo;s money, lend to it, and give the country a sound currency.</p>
+    <div class="cols2">
+      <div class="card"><h3 class="ch">The First Bank, 1791&ndash;1811</h3>
+        <p>Congress chartered the <strong>First Bank of the United States</strong> in 1791 for 20 years. Opponents, including Thomas Jefferson, argued that the Constitution did not allow a national bank and that the bank gave too much power to a few financiers. In 1811, Congress did not renew the charter.</p></div>
+      <div class="card"><h3 class="ch">The Second Bank, 1816&ndash;1836</h3>
+        <p>The War of 1812 left the government with new debts and an unstable currency, so Congress chartered the <strong>Second Bank of the United States</strong> in 1816, again for 20 years. President Andrew Jackson vetoed its renewal in 1832, and the charter ended in 1836.</p></div>
+    </div>
+    <div class="vocab"><p>A <strong>central bank</strong> is the bank of the government and of other banks. It holds their reserves, lends to them, and is responsible for the stability of the money and banking system. The First and Second Banks did some of this work. The United States had no central bank from 1836 to 1913.</p></div>
+    <div class="takeaway">The country tried a national bank twice, and both times the charter was not renewed.</div>
+    <aside class="notes"><span class="nlabel">Instructor notes</span>
+    <p>The disagreement over the two banks is a disagreement over power: a strong national institution against state banks and local control. It returns with the Federal Reserve in 1913. Source: Federal Reserve History essays on the First and Second Banks.</p></aside>
+  </div>
+</section>
+
+
+<section class="slide" id="nationalbanks" data-title="History: state notes, national banks, and panics" data-part="Day 1">
+  <div class="wrap">
+    <div class="shead"><span class="chip">HISTORY</span><span class="kicker">Day 1</span>
+      <h2 class="stitle">History: state bank notes, national banks, and panics, 1836&ndash;1913</h2></div>
+    <div class="cols3">
+      <div class="card"><h3 class="ch">State bank notes, 1836&ndash;1863</h3>
+        <p>Banks chartered by the states printed their own paper notes. Thousands of different notes circulated, and a note from a distant or doubtful bank was often accepted only below its face value. Counterfeits were common.</p></div>
+      <div class="card"><h3 class="ch">National banks, from 1863</h3>
+        <p>During the Civil War, the <strong>National Banking Acts</strong> created national banks chartered and examined by a new federal office, the Comptroller of the Currency. National bank notes were uniform and backed by U.S. government bonds. A 10 percent tax on state bank notes, passed in 1865, drove most of them out of use.</p></div>
+      <div class="card"><h3 class="ch">Panics</h3>
+        <p>The national banking system still had no lender for banks in trouble. Banking panics struck in 1873, 1893, and 1907. In the Panic of 1907, the banker J. P. Morgan organized other bankers to lend to banks facing runs.</p></div>
+    </div>
+    <div class="predict"><span class="plabel">Checkpoint &mdash; commit before you reveal</span>
+      <div class="pbody">
+        <p>In 1850, a shopkeeper is handed a $5 note from a bank in another state. <strong>Why might the shopkeeper accept it only as $4.50?</strong></p>
+        <button type="button" class="revealbtn" aria-expanded="false">Reveal the answer</button>
+        <div class="reveal">
+          <p><span class="ans">Because the note might not be paid in full.</span> The shopkeeper cannot easily check whether the distant bank is sound or whether the note is counterfeit. The lower value covers that risk. Uniform national bank notes, backed by U.S. bonds, removed most of that risk after 1863.</p>
+        </div>
+      </div>
+    </div>
+    <div class="takeaway">The National Banking Acts gave the country one currency, but not a lender for banks in a panic.</div>
+    <aside class="notes"><span class="nlabel">Instructor notes</span>
+    <p>Circulation of state bank notes fell from $143 million in 1865 to $4 million by 1867 (Federal Reserve History, &ldquo;National Banking Acts of 1863 and 1864&rdquo;). The $4.50 is an illustration, not a quoted rate.</p></aside>
+  </div>
+</section>
+
+
+<section class="slide" id="fed1913" data-title="History: the Federal Reserve, 1913" data-part="Day 1">
+  <div class="wrap">
+    <div class="shead"><span class="chip">HISTORY</span><span class="kicker">Day 1</span>
+      <h2 class="stitle">History: the Federal Reserve, 1913</h2></div>
+    <p class="lead">After the Panic of 1907, Congress studied central banks in other countries. President Woodrow Wilson signed the <strong>Federal Reserve Act</strong> on December 23, 1913. It created the country&rsquo;s third central bank, the <strong>Federal Reserve</strong>, or the Fed.</p>
+    <figure><svg viewBox="0 0 1200 360" role="img" aria-label="Timeline of American banking, 1791 to 1933."><defs><marker id="timeline-ah" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B2A4E"/></marker><marker id="timeline-ahT" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0C7C73"/></marker><marker id="timeline-ahO" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a04a00"/></marker><marker id="timeline-ahS" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#526171"/></marker><marker id="timeline-ahG" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#166534"/></marker><marker id="timeline-ahs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B2A4E"/></marker><marker id="timeline-ahOs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a04a00"/></marker><marker id="timeline-ahGs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#166534"/></marker></defs><line x1="50" y1="210" x2="1150" y2="210" stroke="#1B2A4E" stroke-width="4"/><rect x="111.0" y="98" width="136.8" height="30" rx="6" fill="#0C7C73" opacity="0.9"/><text x="179.4" y="119.0" font-size="19" font-weight="700" text-anchor="middle" fill="#ffffff">First Bank</text><rect x="282.0" y="138" width="136.8" height="30" rx="6" fill="#0C7C73" opacity="0.9"/><text x="350.4" y="159.0" font-size="19" font-weight="700" text-anchor="middle" fill="#ffffff">Second Bank</text><rect x="425.6" y="98" width="177.8" height="30" rx="6" fill="#8E6612" opacity="0.9"/><text x="514.5" y="119.0" font-size="19" font-weight="700" text-anchor="middle" fill="#ffffff">State bank notes</text><rect x="603.4" y="138" width="341.9" height="30" rx="6" fill="#526171" opacity="0.9"/><text x="774.4" y="159.0" font-size="19" font-weight="700" text-anchor="middle" fill="#ffffff">National banks</text><line x1="111.0" y1="200" x2="111.0" y2="228" stroke="#1B2A4E" stroke-width="2.5"/><circle cx="111.0" cy="210" r="8" fill="#1B2A4E"/><text x="111.0" y="252.0" font-size="22" font-weight="700" text-anchor="middle" fill="#1B2A4E">1791</text><text x="111.0" y="276.0" font-size="19" font-weight="normal" text-anchor="middle" fill="#526171">Hamilton’s bank</text><line x1="282.0" y1="200" x2="282.0" y2="290" stroke="#1B2A4E" stroke-width="2.5"/><circle cx="282.0" cy="210" r="8" fill="#1B2A4E"/><text x="282.0" y="314.0" font-size="22" font-weight="700" text-anchor="middle" fill="#1B2A4E">1816</text><text x="282.0" y="338.0" font-size="19" font-weight="normal" text-anchor="middle" fill="#526171">Second try</text><line x1="418.8" y1="200" x2="418.8" y2="228" stroke="#1B2A4E" stroke-width="2.5"/><circle cx="418.8" cy="210" r="8" fill="#1B2A4E"/><text x="418.8" y="252.0" font-size="22" font-weight="700" text-anchor="middle" fill="#1B2A4E">1836</text><text x="418.8" y="276.0" font-size="19" font-weight="normal" text-anchor="middle" fill="#526171">Charter ends</text><line x1="603.4" y1="200" x2="603.4" y2="290" stroke="#1B2A4E" stroke-width="2.5"/><circle cx="603.4" cy="210" r="8" fill="#1B2A4E"/><text x="603.4" y="314.0" font-size="22" font-weight="700" text-anchor="middle" fill="#1B2A4E">1863–64</text><text x="603.4" y="338.0" font-size="19" font-weight="normal" text-anchor="middle" fill="#526171">National Banking Acts</text><line x1="904.3" y1="200" x2="904.3" y2="228" stroke="#1B2A4E" stroke-width="2.5"/><circle cx="904.3" cy="210" r="8" fill="#1B2A4E"/><text x="904.3" y="252.0" font-size="22" font-weight="700" text-anchor="middle" fill="#1B2A4E">1907</text><text x="904.3" y="276.0" font-size="19" font-weight="normal" text-anchor="middle" fill="#526171">Panic</text><line x1="945.4" y1="200" x2="945.4" y2="290" stroke="#1B2A4E" stroke-width="2.5"/><circle cx="945.4" cy="210" r="8" fill="#1B2A4E"/><text x="945.4" y="314.0" font-size="22" font-weight="700" text-anchor="middle" fill="#1B2A4E">1913</text><text x="945.4" y="338.0" font-size="19" font-weight="normal" text-anchor="middle" fill="#526171">Federal Reserve Act</text><line x1="1082.1" y1="200" x2="1082.1" y2="228" stroke="#1B2A4E" stroke-width="2.5"/><circle cx="1082.1" cy="210" r="8" fill="#1B2A4E"/><text x="1082.1" y="252.0" font-size="22" font-weight="700" text-anchor="middle" fill="#1B2A4E">1933</text><text x="1082.1" y="276.0" font-size="19" font-weight="normal" text-anchor="middle" fill="#526171">FDIC created</text><text x="600.0" y="40.0" font-size="26" font-weight="700" text-anchor="middle" fill="#1B2A4E">Where American banking came from, 1791–1933</text></svg></figure>
+    <div class="cols2">
+      <div class="card"><h3 class="ch">How the Fed is organized</h3>
+        <p>The Fed has a Board of Governors in Washington, D.C., with 7 members appointed by the President and confirmed by the Senate for 14-year terms. It also has 12 regional Federal Reserve Banks. The regional banks answer the concern of 1791 and 1832 that one bank in one city would hold too much power.</p></div>
+      <div class="card"><h3 class="ch">What it was created to do</h3>
+        <p>The Fed holds banks&rsquo; reserves, supplies the currency, and can lend to sound banks when depositors rush to withdraw. A central bank that lends in a panic is called a <strong>lender of last resort</strong>.</p></div>
+    </div>
+    <div class="takeaway">The Federal Reserve, created in 1913, is the bank for banks and the lender of last resort.</div>
+    <aside class="notes"><span class="nlabel">Instructor notes</span>
+    <p>Week 8 covered the bank failures of 1930&ndash;1933, when the Fed did not stop the panics. Day 2 returns to that story with deposit insurance. Week 13 covers the Fed&rsquo;s monetary policy tools.</p></aside>
+  </div>
+</section>
+
+
+<section class="slide" id="bankdoes" data-title="What a bank does" data-part="Day 1">
+  <div class="wrap">
+    <div class="shead"><span class="chip">BANKS</span><span class="kicker">Day 1</span>
+      <h2 class="stitle">What a bank does, and how its T-account is read</h2></div>
+    <p class="lead">A bank is a <strong>financial intermediary</strong>: it takes deposits from savers and lends to borrowers. The saver does not need to find a borrower, and the borrower does not need to find a saver.</p>
+    <div class="cols2">
+      <figure><svg viewBox="0 0 900 280" role="img" aria-label="Ashford Bank T-account: reserves $1,000, deposits $1,000."><defs><marker id="taccount-ah" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B2A4E"/></marker><marker id="taccount-ahT" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0C7C73"/></marker><marker id="taccount-ahO" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a04a00"/></marker><marker id="taccount-ahS" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#526171"/></marker><marker id="taccount-ahG" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#166534"/></marker><marker id="taccount-ahs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B2A4E"/></marker><marker id="taccount-ahOs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a04a00"/></marker><marker id="taccount-ahGs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#166534"/></marker></defs><rect x="150.0" y="60.0" width="600.0" height="166.0" rx="10" fill="#ffffff" stroke="#C9D3DF" stroke-width="2"/><text x="450.0" y="98.0" font-size="32" font-weight="700" text-anchor="middle" fill="#1B2A4E">Ashford Bank, after Ana’s deposit</text><line x1="164.0" y1="160.0" x2="736.0" y2="160.0" stroke="#1B2A4E" stroke-width="3"/><line x1="450.0" y1="160.0" x2="450.0" y2="214.0" stroke="#1B2A4E" stroke-width="3"/><text x="300.0" y="150.0" font-size="28" font-weight="700" text-anchor="middle" fill="#0C7C73">Assets</text><text x="600.0" y="150.0" font-size="28" font-weight="700" text-anchor="middle" fill="#0C7C73">Liabilities</text><text x="162.0" y="200.0" font-size="30" font-weight="normal" text-anchor="start" fill="#1B2A4E">Reserves</text><text x="438.0" y="200.0" font-size="30" font-weight="normal" text-anchor="end" fill="#1B2A4E">$1,000</text><text x="462.0" y="200.0" font-size="30" font-weight="normal" text-anchor="start" fill="#1B2A4E">Deposits</text><text x="738.0" y="200.0" font-size="30" font-weight="normal" text-anchor="end" fill="#1B2A4E">$1,000</text><text x="450.0" y="40.0" font-size="22" font-weight="normal" text-anchor="middle" fill="#526171">A T-account lists what a bank owns and what it owes.</text><text x="300.0" y="262.0" font-size="22" font-weight="600" text-anchor="middle" fill="#0C7C73">What the bank owns</text><text x="600.0" y="262.0" font-size="22" font-weight="600" text-anchor="middle" fill="#0C7C73">What the bank owes</text></svg></figure>
+      <div class="card"><h3 class="ch">Reading a T-account</h3>
+        <p>A <strong>T-account</strong> lists a bank&rsquo;s assets on the left and its liabilities on the right. <strong>Assets</strong> are what the bank owns, such as reserves and loans. <strong>Liabilities</strong> are what the bank owes, such as deposits, which customers can withdraw.</p>
+        <p>In Lakeland, Ana deposits $1,000 of cash in Ashford Bank. The bank now owes Ana $1,000, so deposits rise by $1,000. The cash becomes the bank&rsquo;s <strong>reserves</strong>: cash in its vault and its account at the Federal Reserve.</p></div>
+    </div>
+    <div class="vocab"><p>A real bank also has <strong>bank capital</strong>: the owners&rsquo; own money in the bank, equal to its assets minus its liabilities. Bank capital absorbs losses before depositors lose anything. The examples in this deck leave it out to keep the T-accounts short.</p></div>
+    <div class="takeaway">A deposit is a liability of the bank, and the cash it brings in is an asset, the bank&rsquo;s reserves.</div>
+    <aside class="notes"><span class="nlabel">Instructor notes</span>
+    <p>Lakeland is the Week 11 economy, reused so that students meet one new idea at a time. Ashford, Birch, and Cedar Banks carry the Day 2 build.</p></aside>
+  </div>
+</section>
+
+
+<section class="slide" id="day1wrap" data-title="Day 1 wrap — before Day 2" data-part="Day 1">
+  <div class="wrap">
+    <div class="shead"><span class="chip">WRAP</span><span class="kicker">Day 1</span>
+      <h2 class="stitle">Before Day 2</h2></div>
+    <div class="cols2">
+      <div class="card pos"><h3 class="ch">&#9989; What you can do now</h3><ul>
+        <li>Name the three functions of money</li>
+        <li>Explain why fiat money has value</li>
+        <li>Tell what is in M1 and in M2</li>
+        <li>Put the First Bank, the Second Bank, the National Banking Acts, and the Federal Reserve in order, and say what each changed</li>
+        <li>Read a bank&rsquo;s T-account after a deposit</li>
+      </ul></div>
+      <div class="card"><h3 class="ch">&#128260; What Day 2 does</h3><ul>
+        <li>Shows how a loan creates new money</li>
+        <li>Follows one deposit through three banks</li>
+        <li>Gives the limit on new deposits with the money multiplier</li>
+        <li>Explains bank runs, deposit insurance, and who supervises banks</li>
+        <li>Explains the failure of Silicon Valley Bank in 2023</li>
+      </ul></div>
+    </div>
+    <div class="predict"><span class="plabel">Predict first &mdash; think about it before Day 2</span>
+      <div class="pbody">
+        <p>Ashford Bank holds Ana&rsquo;s $1,000 as reserves. Ana is unlikely to withdraw it all tomorrow. <strong>What would the bank like to do with most of it, and why?</strong> Write your answer and one reason.</p>
+        <button type="button" class="revealbtn" aria-expanded="false">Reveal the answer</button>
+        <div class="reveal">
+          <p><span class="ans">Lend most of it.</span> Reserves earn the bank little, and a loan earns interest. The bank keeps enough reserves to pay the withdrawals it expects and lends the rest. Day 2 shows that this loan creates new money.</p>
+        </div>
+      </div>
+    </div>
+    <div class="takeaway">Day 1 covered what money is and where banks came from. Day 2 covers how banks create money and why they are supervised.</div>
+    <aside class="notes"><span class="nlabel">Instructor notes</span>
+    <p>If you want a muddiest-point check: one sentence, why is a credit card not money?</p></aside>
+  </div>
+</section>
+
+
+<section class="slide" id="reserves" data-title="Reserves and the reserve ratio" data-part="Day 2">
+  <div class="wrap">
+    <div class="shead"><span class="chip">BANKS</span><span class="kicker">Day 2</span>
+      <h2 class="stitle">Reserves and the reserve ratio</h2></div>
+    <p class="lead">On a normal day, only a small share of depositors withdraw their money. So a bank keeps part of its deposits as reserves and lends the rest. A system in which banks keep only part of their deposits as reserves is called <strong>fractional reserve banking</strong>.</p>
+    <div class="vocab"><p>The <strong>reserve ratio</strong> is the share of deposits that a bank keeps as reserves. Reserve ratio = reserves / deposits.</p></div>
+    <div class="cols2">
+      <div class="card"><h3 class="ch">The required ratio is 0 percent</h3>
+        <p>Before 2020, the Federal Reserve required banks to keep up to 10 percent of their checking deposits as reserves. On March 26, 2020, it set the required ratio to 0 percent, and it is still 0 percent. Banks still keep reserves, because they must pay withdrawals and make payments to other banks every day.</p></div>
+      <div class="card"><h3 class="ch">This week&rsquo;s example</h3>
+        <p>In Lakeland, each bank chooses to keep <strong>20 percent</strong> of each deposit as reserves and to lend the other 80 percent. Ashford Bank keeps 20 percent of Ana&rsquo;s $1,000 deposit, which is $1,000 &times; 0.20 = $200. It lends $1,000 &minus; $200 = $800.</p></div>
+    </div>
+    <div class="takeaway">A bank keeps part of each deposit as reserves and lends the rest.</div>
+    <aside class="notes"><span class="nlabel">Instructor notes</span>
+    <p>OpenStax &sect;27.4 is written with a required ratio of 10 percent; &sect;28.3 records the March 2020 change. The deck teaches the ratio the bank chooses, with the one-step formula for the multiplier.</p></aside>
+  </div>
+</section>
+
+
+<section class="slide" id="build1" data-title="Build #1: a deposit, a loan, and a re-deposit" data-part="Day 2">
+  <div class="wrap">
+    <div class="shead"><span class="chip">MONEY CREATION</span><span class="kicker">Day 2</span>
+      <h2 class="stitle">Build #1: a deposit, a loan, and a re-deposit</h2></div>
+    <p class="lead">Follow Ana&rsquo;s $1,000 through three of Lakeland&rsquo;s banks. Each bank keeps 20 percent of each deposit as reserves and lends the rest.</p>
+    <div class="build" id="bd-chain" aria-label="Stepwise build of a deposit and loans through three banks">
+      <ol class="bcaps" hidden>
+        <li><strong>The deposit.</strong> Ana deposits $1,000 of cash in Ashford Bank. Deposits rise by $1,000, and reserves rise by $1,000. The money supply has not changed yet: $1,000 of cash became a $1,000 deposit.</li>
+        <li><strong>The loan.</strong> Ashford Bank keeps $200 as reserves and lends $800 to Ben, a Lakeland business owner, by adding $800 to his checking account. Ana still has her $1,000 deposit, and Ben now has $800 to spend. The loan <strong>created $800 of new money</strong>. When Ben pays for equipment, his $800 leaves Ashford Bank, so Ashford&rsquo;s reserves fall to $200 and its loan of $800 remains.</li>
+        <li><strong>The re-deposit.</strong> Ben spends the $800 on equipment, and the seller deposits it in Birch Bank. Birch Bank keeps 20 percent, $160, and lends $640.</li>
+        <li><strong>The next round.</strong> The $640 is spent and deposited in Cedar Bank, which keeps $128 and lends $512. In three rounds, loans created $800 + $640 + $512 = $1,952 of new money. Each round is smaller, because each bank keeps 20 percent.</li>
+      </ol>
+      <div class="stage">
+        <svg viewBox="0 0 1200 588" role="img" aria-label="Three bank T-accounts: deposits, reserves, and loans.">
+          <defs><marker id="chain-ah" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B2A4E"/></marker><marker id="chain-ahT" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0C7C73"/></marker><marker id="chain-ahO" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a04a00"/></marker><marker id="chain-ahS" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#526171"/></marker><marker id="chain-ahG" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#166534"/></marker><marker id="chain-ahs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B2A4E"/></marker><marker id="chain-ahOs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a04a00"/></marker><marker id="chain-ahGs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#166534"/></marker></defs>
+          <g data-step="1"><text x="205.0" y="34.0" font-size="20" font-weight="600" text-anchor="middle" fill="#1B2A4E">Ana deposits $1,000 of cash.</text><rect x="20.0" y="50.0" width="370.0" height="132.0" rx="10" fill="#ffffff" stroke="#C9D3DF" stroke-width="2"/><text x="205.0" y="78.0" font-size="22" font-weight="700" text-anchor="middle" fill="#1B2A4E">Ashford Bank</text><line x1="34.0" y1="128.0" x2="376.0" y2="128.0" stroke="#1B2A4E" stroke-width="3"/><line x1="205.0" y1="128.0" x2="205.0" y2="170.0" stroke="#1B2A4E" stroke-width="3"/><text x="112.5" y="118.0" font-size="18" font-weight="700" text-anchor="middle" fill="#0C7C73">Assets</text><text x="297.5" y="118.0" font-size="18" font-weight="700" text-anchor="middle" fill="#0C7C73">Liabilities</text><text x="32.0" y="156.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1B2A4E">Reserves</text><text x="193.0" y="156.0" font-size="20" font-weight="normal" text-anchor="end" fill="#1B2A4E">$1,000</text><text x="217.0" y="156.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1B2A4E">Deposits</text><text x="378.0" y="156.0" font-size="20" font-weight="normal" text-anchor="end" fill="#1B2A4E">$1,000</text></g>
+          <g data-step="2"><line x1="205.0" y1="188.0" x2="205.0" y2="244.0" stroke="#0C7C73" stroke-width="4" marker-end="url(#chain-ahT)"/><text x="219.0" y="210.0" font-size="20" font-weight="700" text-anchor="start" fill="#0C7C73">Ashford lends</text><text x="219.0" y="234.0" font-size="20" font-weight="700" text-anchor="start" fill="#0C7C73">$800 to Ben.</text><rect x="20.0" y="252.0" width="370.0" height="170.0" rx="10" fill="#ffffff" stroke="#C9D3DF" stroke-width="2"/><text x="205.0" y="280.0" font-size="22" font-weight="700" text-anchor="middle" fill="#1B2A4E">Ashford Bank, after Ben spends</text><line x1="34.0" y1="330.0" x2="376.0" y2="330.0" stroke="#1B2A4E" stroke-width="3"/><line x1="205.0" y1="330.0" x2="205.0" y2="410.0" stroke="#1B2A4E" stroke-width="3"/><text x="112.5" y="320.0" font-size="18" font-weight="700" text-anchor="middle" fill="#0C7C73">Assets</text><text x="297.5" y="320.0" font-size="18" font-weight="700" text-anchor="middle" fill="#0C7C73">Liabilities</text><text x="32.0" y="358.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1B2A4E">Reserves</text><text x="193.0" y="358.0" font-size="20" font-weight="normal" text-anchor="end" fill="#1B2A4E">$200</text><text x="32.0" y="396.0" font-size="20" font-weight="700" text-anchor="start" fill="#1B2A4E">Loans</text><text x="193.0" y="396.0" font-size="20" font-weight="700" text-anchor="end" fill="#1B2A4E">$800</text><text x="217.0" y="358.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1B2A4E">Deposits</text><text x="378.0" y="358.0" font-size="20" font-weight="normal" text-anchor="end" fill="#1B2A4E">$1,000</text></g>
+          <g data-step="3"><line x1="394.0" y1="352.0" x2="409.0" y2="352.0" stroke="#0C7C73" stroke-width="4" marker-end="url(#chain-ahT)"/><text x="600.0" y="236.0" font-size="20" font-weight="600" text-anchor="middle" fill="#1B2A4E">The $800 is spent and deposited.</text><rect x="415.0" y="252.0" width="370.0" height="170.0" rx="10" fill="#ffffff" stroke="#C9D3DF" stroke-width="2"/><text x="600.0" y="280.0" font-size="22" font-weight="700" text-anchor="middle" fill="#1B2A4E">Birch Bank</text><line x1="429.0" y1="330.0" x2="771.0" y2="330.0" stroke="#1B2A4E" stroke-width="3"/><line x1="600.0" y1="330.0" x2="600.0" y2="410.0" stroke="#1B2A4E" stroke-width="3"/><text x="507.5" y="320.0" font-size="18" font-weight="700" text-anchor="middle" fill="#0C7C73">Assets</text><text x="692.5" y="320.0" font-size="18" font-weight="700" text-anchor="middle" fill="#0C7C73">Liabilities</text><text x="427.0" y="358.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1B2A4E">Reserves</text><text x="588.0" y="358.0" font-size="20" font-weight="normal" text-anchor="end" fill="#1B2A4E">$160</text><text x="427.0" y="396.0" font-size="20" font-weight="700" text-anchor="start" fill="#1B2A4E">Loans</text><text x="588.0" y="396.0" font-size="20" font-weight="700" text-anchor="end" fill="#1B2A4E">$640</text><text x="612.0" y="358.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1B2A4E">Deposits</text><text x="773.0" y="358.0" font-size="20" font-weight="normal" text-anchor="end" fill="#1B2A4E">$800</text></g>
+          <g data-step="4"><line x1="789.0" y1="352.0" x2="804.0" y2="352.0" stroke="#0C7C73" stroke-width="4" marker-end="url(#chain-ahT)"/><text x="995.0" y="236.0" font-size="20" font-weight="600" text-anchor="middle" fill="#1B2A4E">The $640 is spent and deposited.</text><rect x="810.0" y="252.0" width="370.0" height="170.0" rx="10" fill="#ffffff" stroke="#C9D3DF" stroke-width="2"/><text x="995.0" y="280.0" font-size="22" font-weight="700" text-anchor="middle" fill="#1B2A4E">Cedar Bank</text><line x1="824.0" y1="330.0" x2="1166.0" y2="330.0" stroke="#1B2A4E" stroke-width="3"/><line x1="995.0" y1="330.0" x2="995.0" y2="410.0" stroke="#1B2A4E" stroke-width="3"/><text x="902.5" y="320.0" font-size="18" font-weight="700" text-anchor="middle" fill="#0C7C73">Assets</text><text x="1087.5" y="320.0" font-size="18" font-weight="700" text-anchor="middle" fill="#0C7C73">Liabilities</text><text x="822.0" y="358.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1B2A4E">Reserves</text><text x="983.0" y="358.0" font-size="20" font-weight="normal" text-anchor="end" fill="#1B2A4E">$128</text><text x="822.0" y="396.0" font-size="20" font-weight="700" text-anchor="start" fill="#1B2A4E">Loans</text><text x="983.0" y="396.0" font-size="20" font-weight="700" text-anchor="end" fill="#1B2A4E">$512</text><text x="1007.0" y="358.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1B2A4E">Deposits</text><text x="1168.0" y="358.0" font-size="20" font-weight="normal" text-anchor="end" fill="#1B2A4E">$640</text><rect x="415.0" y="448.0" width="765.0" height="128.0" rx="12" fill="#FBF3E2" stroke="#8E6612" stroke-width="2"/><text x="797.0" y="486.0" font-size="21" font-weight="600" text-anchor="middle" fill="#1B2A4E">New money created by loans in three rounds:</text><text x="797.0" y="528.0" font-size="30" font-weight="700" text-anchor="middle" fill="#1B2A4E">$800 + $640 + $512 = $1,952</text><text x="797.0" y="560.0" font-size="19" font-weight="normal" text-anchor="middle" fill="#526171">Each bank keeps 20 percent of each deposit.</text></g>
+        </svg>
+        <div class="bcap"><span class="bstep">Step 1 of 4</span><div class="btext" aria-live="polite"></div></div>
+      </div>
+      <div class="bctrl">
+        <button type="button" class="bprev">&larr; Back</button>
+        <button type="button" class="bnext">Next step &rarr;</button>
+        <span class="bdots" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="vocab"><p><strong>Why a loan creates money.</strong> A bank makes a loan by adding to the borrower&rsquo;s deposit. The first depositor still has her deposit, and the borrower has a new one. Both deposits can be spent, so the money supply is larger.</p></div>
+    <div class="takeaway">When a bank lends, it creates a new deposit, and that deposit is new money.</div>
+    <aside class="notes"><span class="nlabel">Instructor notes</span>
+    <p>The common error is to say the bank &ldquo;lends out Ana&rsquo;s money,&rdquo; so no money is created. Ana&rsquo;s deposit is still hers and still spendable. The optional money-creation demonstration acts out this build with play money.</p></aside>
+  </div>
+</section>
+
+
+<section class="slide" id="multiplier" data-title="The money multiplier" data-part="Day 2">
+  <div class="wrap">
+    <div class="shead"><span class="chip">MONEY CREATION</span><span class="kicker">Day 2</span>
+      <h2 class="stitle">The money multiplier: the limit on new deposits</h2></div>
+    <p class="lead">The rounds continue: $512 is deposited, and the next bank keeps $102.40 and lends $409.60. Each round adds 80 percent of the round before. The total deposits rise toward a limit and never pass it.</p>
+    <div class="cols2">
+      <div>
+        <figure><svg viewBox="0 0 940 530" role="img" aria-label="Total deposits by round, rising toward $5,000."><defs><marker id="rounds-ah" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B2A4E"/></marker><marker id="rounds-ahT" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0C7C73"/></marker><marker id="rounds-ahO" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a04a00"/></marker><marker id="rounds-ahS" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#526171"/></marker><marker id="rounds-ahG" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#166534"/></marker><marker id="rounds-ahs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B2A4E"/></marker><marker id="rounds-ahOs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a04a00"/></marker><marker id="rounds-ahGs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#166534"/></marker></defs><text x="490.0" y="34.0" font-size="24" font-weight="700" text-anchor="middle" fill="#1B2A4E">Total deposits after each round, Lakeland’s banks</text><rect x="124.4" y="368.0" width="47.1" height="72.0" fill="#0C7C73"/><text x="148.0" y="468.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">1</text><text x="148.0" y="358.0" font-size="20" font-weight="700" text-anchor="middle" fill="#1B2A4E">$1,000</text><rect x="200.4" y="310.4" width="47.1" height="129.6" fill="#0C7C73"/><text x="224.0" y="468.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">2</text><text x="224.0" y="300.4" font-size="20" font-weight="700" text-anchor="middle" fill="#1B2A4E">$1,800</text><rect x="276.4" y="264.3" width="47.1" height="175.7" fill="#0C7C73"/><text x="300.0" y="468.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">3</text><text x="300.0" y="254.3" font-size="20" font-weight="700" text-anchor="middle" fill="#1B2A4E">$2,440</text><rect x="352.4" y="227.5" width="47.1" height="212.5" fill="#B9C3CF"/><text x="376.0" y="468.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">4</text><rect x="428.4" y="198.0" width="47.1" height="242.0" fill="#B9C3CF"/><text x="452.0" y="468.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">5</text><rect x="504.4" y="174.4" width="47.1" height="265.6" fill="#B9C3CF"/><text x="528.0" y="468.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">6</text><rect x="580.4" y="155.5" width="47.1" height="284.5" fill="#B9C3CF"/><text x="604.0" y="468.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">7</text><rect x="656.4" y="140.4" width="47.1" height="299.6" fill="#B9C3CF"/><text x="680.0" y="468.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">8</text><rect x="732.4" y="128.3" width="47.1" height="311.7" fill="#B9C3CF"/><text x="756.0" y="468.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">9</text><rect x="808.4" y="118.7" width="47.1" height="321.3" fill="#B9C3CF"/><text x="832.0" y="468.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">10</text><line x1="110" y1="80.0" x2="870" y2="80.0" stroke="#a04a00" stroke-width="3" stroke-dasharray="10 7"/><text x="870.0" y="68.0" font-size="22" font-weight="700" text-anchor="end" fill="#a04a00">Limit: $1,000 × 5 = $5,000</text><path d="M110,60 L110,440 L870,440" fill="none" stroke="#333" stroke-width="2.5"/><text x="100.0" y="447.0" font-size="18" font-weight="normal" text-anchor="end" fill="#526171">$0</text><text x="100.0" y="375.0" font-size="18" font-weight="normal" text-anchor="end" fill="#526171">$1,000</text><text x="100.0" y="303.0" font-size="18" font-weight="normal" text-anchor="end" fill="#526171">$2,000</text><text x="100.0" y="231.0" font-size="18" font-weight="normal" text-anchor="end" fill="#526171">$3,000</text><text x="100.0" y="159.0" font-size="18" font-weight="normal" text-anchor="end" fill="#526171">$4,000</text><text x="100.0" y="87.0" font-size="18" font-weight="normal" text-anchor="end" fill="#526171">$5,000</text><text x="490.0" y="502.0" font-size="21" font-weight="600" text-anchor="middle" fill="#1B2A4E">Round of deposits</text></svg></figure>
+        <div class="card"><h3 class="ch">What the bars count</h3>
+          <p>Each bar counts Ana&rsquo;s deposit and the deposits that sellers make at the next bank. A loan is counted in a bar after it is spent and deposited. After round 3, total deposits are $2,440, and Cedar Bank&rsquo;s $512 loan is not yet in the bar. So $2,440 &minus; $1,000 = $1,440 is less than the $1,952 that the three loans created. To find the new money after a few rounds, add the loans. Subtract the first deposit from total deposits only at the limit.</p></div>
+      </div>
+      <div>
+        <div class="vocab"><p>The <strong>money multiplier</strong> is the largest amount of deposits that the banking system can create from each $1 of new reserves. Money multiplier = 1 / reserve ratio.</p></div>
+        <div class="card"><h3 class="ch">Lakeland&rsquo;s numbers</h3>
+          <p>The reserve ratio is 0.20, so the money multiplier is 1 / 0.20 = 5. Total deposits can reach $1,000 &times; 5 = $5,000. Ana&rsquo;s $1,000 was money already, as cash. So the loans can create up to $5,000 &minus; $1,000 = <strong>$4,000 of new money</strong>.</p></div>
+      </div>
+    </div>
+    <div class="predict"><span class="plabel">Checkpoint &mdash; commit before you reveal</span>
+      <div class="pbody">
+        <p>Suppose Lakeland&rsquo;s banks grow cautious and keep 50 percent of each deposit. <strong>What is the money multiplier, and how far can total deposits grow from Ana&rsquo;s $1,000?</strong></p>
+        <button type="button" class="revealbtn" aria-expanded="false">Reveal the answer</button>
+        <div class="reveal">
+          <p><span class="ans">The multiplier is 2, and total deposits can reach $2,000.</span> The multiplier is 1 / 0.50 = 2, and $1,000 &times; 2 = $2,000. When banks keep more of each deposit, they lend less, and less new money is created.</p>
+        </div>
+      </div>
+    </div>
+    <div class="takeaway">A lower reserve ratio means a larger money multiplier and more money created by loans.</div>
+    <aside class="notes"><span class="nlabel">Instructor notes</span>
+    <p>The multiplier is a one-step formula, used after the chain has shown what it means. The figure&rsquo;s first three bars are the build&rsquo;s numbers: $1,000, $1,800, and $2,440.</p></aside>
+  </div>
+</section>
+
+
+<section class="slide" id="smaller" data-title="Why real money creation is smaller" data-part="Day 2">
+  <div class="wrap">
+    <div class="shead"><span class="chip">MONEY CREATION</span><span class="kicker">Day 2</span>
+      <h2 class="stitle">Why real money creation is smaller than the limit</h2></div>
+    <p class="lead">The multiplier gives the most that the banking system can create. It assumes that every dollar lent is spent and deposited again and that every bank lends all it can. In a real economy, three things keep money creation below the limit.</p>
+    <div class="cols3">
+      <div class="card"><h3 class="ch">People hold cash</h3>
+        <p>When a borrower or a seller keeps part of a payment as cash, that part is not deposited, so the next bank has less to lend.</p></div>
+      <div class="card"><h3 class="ch">Banks keep extra reserves</h3>
+        <p>When banks are worried about withdrawals or about borrowers who might not repay, they keep more than they planned and lend less.</p></div>
+      <div class="card"><h3 class="ch">Borrowers borrow less</h3>
+        <p>A bank can lend only to people and firms who want to borrow. In a recession, fewer businesses want loans.</p></div>
+    </div>
+    <div class="callout"><p>Because the required reserve ratio is 0 percent, the multiplier is not fixed by law. It depends on the reserves that banks choose to keep and on the cash that people choose to hold, and both change with the economy.</p></div>
+    <div class="takeaway">The money multiplier gives a limit, and real money creation is usually smaller.</div>
+    <aside class="notes"><span class="nlabel">Instructor notes</span>
+    <p>After 2008, banks held large reserves, and the money multiplier fell well below the textbook value. Students do not need the data; the idea is that the multiplier changes.</p></aside>
+  </div>
+</section>
+
+
+<section class="slide" id="runs" data-title="Bank runs" data-part="Day 2">
+  <div class="wrap">
+    <div class="shead"><span class="chip">REGULATION</span><span class="kicker">Day 2</span>
+      <h2 class="stitle">Bank runs: why a sound bank can fail</h2></div>
+    <p class="lead">After Build #1, Ashford Bank holds $200 of reserves against $1,000 of deposits. The other $800 is in a loan that will be repaid over several years. If Ana asks for all $1,000 today, the bank cannot pay her from reserves.</p>
+    <div class="vocab"><p>A <strong>bank run</strong> happens when many depositors try to withdraw their money at once because they fear that the bank will fail. Each depositor has a reason to withdraw first, because the depositors who are first in line are paid.</p></div>
+    <div class="cols2">
+      <div class="card"><h3 class="ch">The 1930s</h3>
+        <p>Week 8 covered the bank failures of the Great Depression. From 1930 through 1933, about 9,000 banks suspended operations. A run on one bank made depositors at other banks fear for their money, so the runs spread.</p></div>
+      <div class="card"><h3 class="ch">The answer in 1933</h3>
+        <p>The <strong>Banking Act of 1933</strong> created the <strong>Federal Deposit Insurance Corporation (FDIC)</strong>. From January 1, 1934, the FDIC insured each depositor&rsquo;s deposits up to $2,500. An insured depositor has no reason to run.</p></div>
+    </div>
+    <div class="predict"><span class="plabel">Checkpoint &mdash; commit before you reveal</span>
+      <div class="pbody">
+        <p>A rumor says a bank lost money on its loans. The rumor is false. <strong>Why can the bank still fail?</strong></p>
+        <button type="button" class="revealbtn" aria-expanded="false">Reveal the answer</button>
+        <div class="reveal">
+          <p><span class="ans">Because its reserves cover only part of its deposits.</span> If enough depositors believe the rumor and withdraw at once, the bank runs out of reserves before it can collect on its loans. The fear can cause the failure even though the loans are sound.</p>
+        </div>
+      </div>
+    </div>
+    <div class="takeaway">Because banks keep only part of their deposits as reserves, a run can close a sound bank.</div>
+    <aside class="notes"><span class="nlabel">Instructor notes</span>
+    <p>The 9,000 figure is the Week 8 number. A lender of last resort can lend reserves to a sound bank during a run; the Fed did not do enough of that in 1930&ndash;1933.</p></aside>
+  </div>
+</section>
+
+
+<section class="slide" id="regulation" data-title="How banking is organized and regulated" data-part="Day 2">
+  <div class="wrap">
+    <div class="shead"><span class="chip">REGULATION</span><span class="kicker">Day 2</span>
+      <h2 class="stitle">How U.S. banking is organized and regulated</h2></div>
+    <p class="lead">The United States has a <strong>dual banking system</strong>: a bank can be chartered by the federal government, as a national bank, or by a state. Several agencies supervise banks, and each has its own job.</p>
+    <figure><svg viewBox="0 0 1000 515" role="img" aria-label="The Fed, FDIC, OCC, and state regulators supervise banks."><defs><marker id="regulators-ah" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B2A4E"/></marker><marker id="regulators-ahT" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0C7C73"/></marker><marker id="regulators-ahO" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a04a00"/></marker><marker id="regulators-ahS" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#526171"/></marker><marker id="regulators-ahG" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#166534"/></marker><marker id="regulators-ahs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B2A4E"/></marker><marker id="regulators-ahOs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a04a00"/></marker><marker id="regulators-ahGs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#166534"/></marker></defs><text x="500.0" y="36.0" font-size="26" font-weight="700" text-anchor="middle" fill="#1B2A4E">Who supervises U.S. banks</text><rect x="10.0" y="70.0" width="238.0" height="170.0" rx="12" fill="#F3F6FA" stroke="#1B2A4E" stroke-width="2.5"/><text x="129.0" y="108.0" font-size="23" font-weight="700" text-anchor="middle" fill="#0C7C73">Federal Reserve</text><text x="129.0" y="148.0" font-size="19" font-weight="normal" text-anchor="middle" fill="#1B2A4E">Central bank since 1913</text><text x="129.0" y="171.8" font-size="19" font-weight="normal" text-anchor="middle" fill="#1B2A4E">Board of Governors</text><text x="129.0" y="195.5" font-size="19" font-weight="normal" text-anchor="middle" fill="#1B2A4E">12 Reserve Banks</text><line x1="129.0" y1="246.0" x2="296.0" y2="345.0" stroke="#526171" stroke-width="3" marker-end="url(#regulators-ahS)"/><rect x="257.0" y="70.0" width="238.0" height="170.0" rx="12" fill="#F3F6FA" stroke="#1B2A4E" stroke-width="2.5"/><text x="376.0" y="108.0" font-size="23" font-weight="700" text-anchor="middle" fill="#0C7C73">FDIC</text><text x="376.0" y="148.0" font-size="19" font-weight="normal" text-anchor="middle" fill="#1B2A4E">Insures deposits</text><text x="376.0" y="171.8" font-size="19" font-weight="normal" text-anchor="middle" fill="#1B2A4E">up to $250,000 per</text><text x="376.0" y="195.5" font-size="19" font-weight="normal" text-anchor="middle" fill="#1B2A4E">depositor, per bank</text><line x1="376.0" y1="246.0" x2="431.8" y2="345.0" stroke="#526171" stroke-width="3" marker-end="url(#regulators-ahS)"/><rect x="504.0" y="70.0" width="238.0" height="170.0" rx="12" fill="#F3F6FA" stroke="#1B2A4E" stroke-width="2.5"/><text x="623.0" y="108.0" font-size="23" font-weight="700" text-anchor="middle" fill="#0C7C73">OCC</text><text x="623.0" y="148.0" font-size="19" font-weight="normal" text-anchor="middle" fill="#1B2A4E">Charters and examines</text><text x="623.0" y="171.8" font-size="19" font-weight="normal" text-anchor="middle" fill="#1B2A4E">national banks</text><text x="623.0" y="195.5" font-size="19" font-weight="normal" text-anchor="middle" fill="#1B2A4E">since 1863</text><line x1="623.0" y1="246.0" x2="567.6" y2="345.0" stroke="#526171" stroke-width="3" marker-end="url(#regulators-ahS)"/><rect x="751.0" y="70.0" width="238.0" height="170.0" rx="12" fill="#F3F6FA" stroke="#1B2A4E" stroke-width="2.5"/><text x="870.0" y="108.0" font-size="23" font-weight="700" text-anchor="middle" fill="#0C7C73">State regulators</text><text x="870.0" y="148.0" font-size="19" font-weight="normal" text-anchor="middle" fill="#1B2A4E">Charter and examine</text><text x="870.0" y="171.8" font-size="19" font-weight="normal" text-anchor="middle" fill="#1B2A4E">state banks</text><line x1="870.0" y1="246.0" x2="703.5" y2="345.0" stroke="#526171" stroke-width="3" marker-end="url(#regulators-ahS)"/><path d="M417,396.5 L500.0,365 L583,396.5 Z" fill="#0C7C73"/><rect x="425.0" y="396.5" width="150.0" height="8.4" fill="#1B2A4E"/><rect x="438.5" y="404.9" width="15.0" height="54.6" fill="#F3F6FA" stroke="#1B2A4E" stroke-width="2.5"/><rect x="474.5" y="404.9" width="15.0" height="54.6" fill="#F3F6FA" stroke="#1B2A4E" stroke-width="2.5"/><rect x="510.5" y="404.9" width="15.0" height="54.6" fill="#F3F6FA" stroke="#1B2A4E" stroke-width="2.5"/><rect x="546.5" y="404.9" width="15.0" height="54.6" fill="#F3F6FA" stroke="#1B2A4E" stroke-width="2.5"/><rect x="419.0" y="459.5" width="162.0" height="10.5" fill="#1B2A4E"/><text x="500.0" y="500.0" font-size="22" font-weight="700" text-anchor="middle" fill="#1B2A4E">Banks</text></svg></figure>
+    <div class="cols3">
+      <div class="card"><h3 class="ch">Deposit insurance</h3>
+        <p>The FDIC insures deposits up to <strong>$250,000 per depositor, per insured bank, for each account ownership category</strong>. Congress raised the limit to $250,000 in 2008 and made it permanent in 2010.</p></div>
+      <div class="card"><h3 class="ch">Capital and examinations</h3>
+        <p>Supervisors require banks to hold enough bank capital to absorb losses, and examiners check their loans and their risks.</p></div>
+      <div class="card"><h3 class="ch">Lender of last resort</h3>
+        <p>The Federal Reserve can lend reserves to a sound bank that faces large withdrawals.</p></div>
+    </div>
+    <div class="predict"><span class="plabel">Checkpoint &mdash; commit before you reveal</span>
+      <div class="pbody">
+        <p>Jo has $310,000 in a single checking account at one bank, and the bank fails. <strong>How much of Jo&rsquo;s deposit is insured, and how much is not?</strong></p>
+        <button type="button" class="revealbtn" aria-expanded="false">Reveal the answer</button>
+        <div class="reveal">
+          <p><span class="ans">$250,000 is insured, and $60,000 is not.</span> The limit is $250,000 per depositor at one bank, so $310,000 &minus; $250,000 = $60,000 is uninsured. Jo may recover part of the $60,000 later from the sale of the bank&rsquo;s assets.</p>
+        </div>
+      </div>
+    </div>
+    <div class="takeaway">Deposit insurance, capital rules, examinations, and a lender of last resort make bank runs less likely.</div>
+    <aside class="notes"><span class="nlabel">Instructor notes</span>
+    <p>Deposit insurance creates a cost of its own: insured depositors have less reason to watch the risks their bank takes. That tradeoff is the subject of the positive-or-normative checkpoint on the next slide.</p></aside>
+  </div>
+</section>
+
+
+<section class="slide" id="svb" data-title="Case: Silicon Valley Bank, 2023" data-part="Day 2">
+  <div class="wrap">
+    <div class="shead"><span class="chip">CASE</span><span class="kicker">Day 2</span>
+      <h2 class="stitle">Case: Silicon Valley Bank, March 2023</h2></div>
+    <p class="lead">Silicon Valley Bank, in Santa Clara, California, had $209 billion of assets at the end of 2022. Its depositors were mostly technology companies with large accounts, and about 88 percent of its deposits were above the $250,000 insurance limit.</p>
+    <figure><svg viewBox="0 0 1000 440" role="img" aria-label="Silicon Valley Bank timeline, 2020 to March 2023."><defs><marker id="svb-ah" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B2A4E"/></marker><marker id="svb-ahT" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0C7C73"/></marker><marker id="svb-ahO" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a04a00"/></marker><marker id="svb-ahS" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#526171"/></marker><marker id="svb-ahG" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#166534"/></marker><marker id="svb-ahs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B2A4E"/></marker><marker id="svb-ahOs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a04a00"/></marker><marker id="svb-ahGs" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#166534"/></marker></defs><text x="500.0" y="34.0" font-size="26" font-weight="700" text-anchor="middle" fill="#1B2A4E">Silicon Valley Bank, 2020–2023</text><rect x="15.0" y="60.0" width="300.0" height="160.0" rx="12" fill="#F3F6FA" stroke="#C9D3DF" stroke-width="2"/><text x="165.0" y="96.0" font-size="23" font-weight="700" text-anchor="middle" fill="#0C7C73">2020–21</text><text x="165.0" y="136.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">Deposits rise quickly.</text><text x="165.0" y="161.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">SVB buys long-term</text><text x="165.0" y="186.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">bonds.</text><line x1="317.0" y1="140.0" x2="343.0" y2="140.0" stroke="#1B2A4E" stroke-width="3" marker-end="url(#svb-ahs)"/><rect x="345.0" y="60.0" width="300.0" height="160.0" rx="12" fill="#F3F6FA" stroke="#C9D3DF" stroke-width="2"/><text x="495.0" y="96.0" font-size="23" font-weight="700" text-anchor="middle" fill="#0C7C73">2022</text><text x="495.0" y="136.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">Interest rates rise.</text><text x="495.0" y="161.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">The bonds lose</text><text x="495.0" y="186.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">value.</text><line x1="647.0" y1="140.0" x2="673.0" y2="140.0" stroke="#1B2A4E" stroke-width="3" marker-end="url(#svb-ahs)"/><rect x="675.0" y="60.0" width="300.0" height="160.0" rx="12" fill="#FBF3E2" stroke="#8E6612" stroke-width="2"/><text x="825.0" y="96.0" font-size="23" font-weight="700" text-anchor="middle" fill="#0C7C73">Mar 8, 2023</text><text x="825.0" y="136.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">Sells $21 billion</text><text x="825.0" y="161.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">of bonds at a $1.8</text><text x="825.0" y="186.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">billion loss.</text><rect x="15.0" y="250.0" width="300.0" height="160.0" rx="12" fill="#FBF3E2" stroke="#8E6612" stroke-width="2"/><text x="165.0" y="286.0" font-size="23" font-weight="700" text-anchor="middle" fill="#0C7C73">Mar 9</text><text x="165.0" y="326.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">Depositors withdraw</text><text x="165.0" y="351.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">$42 billion in</text><text x="165.0" y="376.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">one day.</text><line x1="317.0" y1="330.0" x2="343.0" y2="330.0" stroke="#1B2A4E" stroke-width="3" marker-end="url(#svb-ahs)"/><rect x="345.0" y="250.0" width="300.0" height="160.0" rx="12" fill="#F3F6FA" stroke="#C9D3DF" stroke-width="2"/><text x="495.0" y="286.0" font-size="23" font-weight="700" text-anchor="middle" fill="#0C7C73">Mar 10</text><text x="495.0" y="326.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">Regulators close</text><text x="495.0" y="351.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">the bank.</text><line x1="647.0" y1="330.0" x2="673.0" y2="330.0" stroke="#1B2A4E" stroke-width="3" marker-end="url(#svb-ahs)"/><rect x="675.0" y="250.0" width="300.0" height="160.0" rx="12" fill="#F3F6FA" stroke="#C9D3DF" stroke-width="2"/><text x="825.0" y="286.0" font-size="23" font-weight="700" text-anchor="middle" fill="#0C7C73">Mar 12</text><text x="825.0" y="326.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">All deposits are</text><text x="825.0" y="351.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">protected, insured</text><text x="825.0" y="376.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1B2A4E">or not.</text><path d="M 850,222 Q 850,236 500,236 Q 160,236 160,248" fill="none" stroke="#1B2A4E" stroke-width="3" marker-end="url(#svb-ahs)"/></svg></figure>
+    <div class="cols2">
+      <div class="card"><h3 class="ch">Why it failed</h3>
+        <p>The bank had put much of its deposits into long-term bonds that paid low interest rates. When interest rates rose in 2022, new bonds paid higher interest. Buyers would then pay less for the bank&rsquo;s older, lower-paying bonds, so those bonds lost value. When the bank sold some at a loss, uninsured depositors feared they would not be paid in full, and they ran. A run that once took days took hours, because depositors could withdraw from their phones.</p></div>
+      <div class="card"><h3 class="ch">What regulators did</h3>
+        <p>On March 12, 2023, the FDIC, the Federal Reserve, and the Treasury announced that all depositors would be paid in full, including uninsured depositors. The decision was meant to stop runs at other banks. The cost was covered by a special fee on banks, not by taxes.</p></div>
+    </div>
+    <div class="predict"><span class="plabel">Checkpoint &mdash; positive or normative?</span>
+      <div class="pbody">
+        <p>Statement A: &ldquo;About 88 percent of Silicon Valley Bank&rsquo;s deposits were uninsured at the end of 2022.&rdquo; Statement B: &ldquo;Regulators should protect every depositor in a failed bank, whatever the size of the deposit.&rdquo; <strong>Which statement is positive, and which is normative?</strong></p>
+        <button type="button" class="revealbtn" aria-expanded="false">Reveal the answer</button>
+        <div class="reveal">
+          <p><span class="ans">A is positive, and B is normative.</span> Statement A can be checked against the bank&rsquo;s records. Statement B is a value judgment: protecting every depositor can stop runs, but it can also give large depositors less reason to watch the risks their bank takes. Evidence can measure both effects, but deciding which matters more is a value judgment.</p>
+        </div>
+      </div>
+    </div>
+    <div class="takeaway">Silicon Valley Bank failed in a run by uninsured depositors, two days after it reported a loss on its bonds.</div>
+    <aside class="notes"><span class="nlabel">Instructor notes</span>
+    <p>Sources: FDIC Chairman Gruenberg&rsquo;s testimony, March 28, 2023 (88 percent uninsured); Vice Chair Barr&rsquo;s testimony and the Federal Reserve review of April 28, 2023 ($1.8 billion loss on $21 billion of securities, $42 billion withdrawn on March 9, $100 billion more expected March 10); the joint statement of March 12, 2023. The fee is the FDIC special assessment on large banks.</p></aside>
+  </div>
+</section>
+
+
+<section class="slide" id="selfcheck" data-title="Check yourself (ungraded)" data-part="Wrap-up">
+  <div class="wrap">
+    <div class="shead"><span class="chip">SELF-CHECK</span><span class="kicker">Wrap-up</span>
+      <h2 class="stitle">Check yourself with 6 ungraded questions</h2></div>
+    <p class="small">Pick an answer, and the explanation appears. You can retake the self-check as often as you like.</p>
+    <form class="quiz" id="sc-quiz">
+      <fieldset data-q="1" data-ans="c">
+        <legend>1. A restaurant lists every dish on its menu with a price in dollars. Which function of money does the menu show?</legend>
+        <label><input type="radio" name="q1" value="a"> medium of exchange</label>
+        <label><input type="radio" name="q1" value="b"> store of value</label>
+        <label><input type="radio" name="q1" value="c"> unit of account</label>
+        <label><input type="radio" name="q1" value="d"> double coincidence of wants</label>
+        <div class="fb" role="status" data-ok="&#10003; Correct. Prices stated in dollars let diners compare the value of the dishes. That is money as a unit of account." data-no="&#10007; Not quite. No payment happens when a menu lists prices, and nothing is saved. The prices measure value, so money serves as a unit of account."></div>
+      </fieldset>
+      <fieldset data-q="2" data-ans="b">
+        <legend>2. Which of these is counted in M1?</legend>
+        <label><input type="radio" name="q2" value="a"> the unused credit limit on a credit card</label>
+        <label><input type="radio" name="q2" value="b"> the balance in a checking account</label>
+        <label><input type="radio" name="q2" value="c"> a one-year certificate of deposit</label>
+        <label><input type="radio" name="q2" value="d"> a share of stock in a bank</label>
+        <div class="fb" role="status" data-ok="&#10003; Correct. M1 is currency plus checking and savings deposits. A checking balance can be spent at once." data-no="&#10007; Not quite. M1 is currency plus checking and savings deposits. A credit limit is a promise of a loan, a certificate of deposit is in M2 only, and a share of stock is not money."></div>
+      </fieldset>
+      <fieldset data-q="3" data-ans="d">
+        <legend>3. Which law created national banks, uniform national bank notes, and the Comptroller of the Currency?</legend>
+        <label><input type="radio" name="q3" value="a"> the charter of the First Bank of the United States, 1791</label>
+        <label><input type="radio" name="q3" value="b"> the Federal Reserve Act, 1913</label>
+        <label><input type="radio" name="q3" value="c"> the Banking Act of 1933</label>
+        <label><input type="radio" name="q3" value="d"> the National Banking Acts, 1863 and 1864</label>
+        <div class="fb" role="status" data-ok="&#10003; Correct. The National Banking Acts, passed during the Civil War, created national banks and a uniform currency backed by U.S. bonds." data-no="&#10007; Not quite. The national banks and their uniform notes came from the National Banking Acts of 1863 and 1864. The Federal Reserve came in 1913, and the FDIC in 1933."></div>
+      </fieldset>
+      <fieldset data-q="4" data-ans="a">
+        <legend>4. Ashford Bank receives a $1,000 deposit and keeps 20 percent as reserves. How much can it lend?</legend>
+        <label><input type="radio" name="q4" value="a"> $800</label>
+        <label><input type="radio" name="q4" value="b"> $200</label>
+        <label><input type="radio" name="q4" value="c"> $1,000</label>
+        <label><input type="radio" name="q4" value="d"> $5,000</label>
+        <div class="fb" role="status" data-ok="&#10003; Correct. The bank keeps $1,000 &times; 0.20 = $200 and lends $1,000 &minus; $200 = $800." data-no="&#10007; Not quite. The bank keeps 20 percent, $200, as reserves and lends the rest: $1,000 &minus; $200 = $800. $5,000 is the limit for the whole banking system, not one bank&rsquo;s loan."></div>
+      </fieldset>
+      <fieldset data-q="5" data-ans="c">
+        <legend>5. Banks keep 10 percent of each deposit as reserves. A new $2,000 deposit arrives. What is the most that total deposits in the banking system can reach?</legend>
+        <label><input type="radio" name="q5" value="a"> $200</label>
+        <label><input type="radio" name="q5" value="b"> $2,200</label>
+        <label><input type="radio" name="q5" value="c"> $20,000</label>
+        <label><input type="radio" name="q5" value="d"> $1,800</label>
+        <div class="fb" role="status" data-ok="&#10003; Correct. The money multiplier is 1 / 0.10 = 10, so total deposits can reach $2,000 &times; 10 = $20,000." data-no="&#10007; Not quite. The money multiplier is 1 / reserve ratio = 1 / 0.10 = 10. The limit on total deposits is $2,000 &times; 10 = $20,000."></div>
+      </fieldset>
+      <fieldset data-q="6" data-ans="b">
+        <legend>6. Which statement is normative?</legend>
+        <label><input type="radio" name="q6" value="a"> The FDIC insures deposits up to $250,000 per depositor, per bank.</label>
+        <label><input type="radio" name="q6" value="b"> The insurance limit should be raised so that small businesses are fully covered.</label>
+        <label><input type="radio" name="q6" value="c"> From 1930 through 1933, about 9,000 U.S. banks suspended operations.</label>
+        <label><input type="radio" name="q6" value="d"> A bank that keeps 20 percent of deposits as reserves has a money multiplier of 5.</label>
+        <div class="fb" role="status" data-ok="&#10003; Correct. &ldquo;Should&rdquo; signals a value judgment about who ought to be protected. The other three statements can be checked with evidence or calculated." data-no="&#10007; Not quite. A normative statement is a value judgment. &ldquo;The limit should be raised&rdquo; weighs protection for depositors against its costs, which evidence alone cannot settle."></div>
+      </fieldset>
+    </form>
+    <div id="sc-score" role="status">Answer the questions above &mdash; your running count appears here.</div>
+    <p><button type="button" class="revealbtn" id="sc-reset">Start over</button></p>
+    <div class="callout"><p>Questions 4 and 5 test the two skills to know well: one bank&rsquo;s loan is the deposit minus the reserves it keeps, and the limit for the whole banking system is the first deposit times 1 / reserve ratio.</p></div>
+  </div>
+</section>
+
+
+<section class="slide" id="watchfors" data-title="This week's common errors" data-part="Wrap-up">
+  <div class="wrap">
+    <div class="shead"><span class="chip">WATCH FOR</span><span class="kicker">Wrap-up</span>
+      <h2 class="stitle">Six common errors this week</h2></div>
+    <div class="tscroll"><table class="house">
+      <caption>Common Module 12 errors and the correction for each</caption>
+      <thead><tr><th scope="col">The error</th><th scope="col">Why it is wrong</th><th scope="col">What to do instead</th></tr></thead>
+      <tbody>
+        <tr><td>Calling a credit card money.</td>
+          <td>A credit card arranges a loan. The card company pays the store, and you repay the loan later.</td>
+          <td>Count the checking deposit that pays the bill, not the card.</td></tr>
+        <tr><td>Putting deposits on the asset side of a bank&rsquo;s T-account.</td>
+          <td>A deposit is money the bank owes to the depositor.</td>
+          <td>Put deposits under liabilities, and reserves and loans under assets.</td></tr>
+        <tr><td>Saying a loan creates no money because the bank &ldquo;lends out&rdquo; a deposit.</td>
+          <td>The first depositor still has her deposit, and the borrower has a new one.</td>
+          <td>Count the loan as new money.</td></tr>
+        <tr><td>Multiplying by the reserve ratio instead of dividing 1 by it.</td>
+          <td>The money multiplier is 1 / reserve ratio, which is larger than 1.</td>
+          <td>With a ratio of 0.20, the multiplier is 1 / 0.20 = 5.</td></tr>
+        <tr><td>Counting the first deposit as new money.</td>
+          <td>The first $1,000 was money already, as cash.</td>
+          <td>Add up the loans. At the limit, new money from loans = total deposits &minus; the first deposit.</td></tr>
+        <tr><td>Saying the law requires banks to keep 10 percent of deposits.</td>
+          <td>The required ratio has been 0 percent since March 26, 2020.</td>
+          <td>Use the ratio that the banks choose to keep.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="watch"><p><strong>Before you fill in a T-account, ask what the bank owns and what it owes.</strong> Reserves and loans are owned. Deposits are owed.</p></div>
+  </div>
+</section>
+
+
+<section class="slide" id="homework" data-title="Homework 12 and the quiz, in one table" data-part="Wrap-up">
+  <div class="wrap">
+    <div class="shead"><span class="chip">HOMEWORK</span><span class="kicker">Wrap-up</span>
+      <h2 class="stitle">Homework 12 and the quiz, in one table</h2></div>
+    <div class="tscroll"><table class="house">
+      <caption>The three Module 12 assignments and the quiz &mdash; what each asks for and what it is worth</caption>
+      <thead><tr><th scope="col">Assessed work</th><th scope="col">What you do</th><th scope="col">Points</th></tr></thead>
+      <tbody>
+        <tr><td><strong>HW12a &mdash; Is It Money?</strong></td>
+          <td>You will sort four everyday cases by the function of money that each one shows and decide whether the item in each case is money. Then you will judge a digital currency against the three functions of money.</td><td>10</td></tr>
+        <tr><td><strong>HW12b &mdash; One Deposit, Three Banks</strong></td>
+          <td>You will follow a new deposit through three banks in the town of Harlow in the T-Account Explorer. Then you will calculate the money created by loans and the money multiplier, and explain why real money creation is smaller.</td><td>10</td></tr>
+        <tr><td><strong>HW12c &mdash; Three Problems, Three Laws</strong></td>
+          <td>You will match three banking problems from American history with the laws that answered them, say what each law changed, and explain why the first two laws did not prevent the next problem. Then you will calculate the insured part of a business deposit and classify two statements as positive or normative.</td><td>10</td></tr>
+        <tr><td><strong>Week 12 Quiz</strong></td>
+          <td>15 questions drawn at random from the module's bank: 5 easy, 5 medium, and 5 hard. Several questions use a T-account. Open book and open notes, no time limit, as many attempts as you like before the deadline, and your highest score counts.</td><td>90</td></tr>
+      </tbody>
+    </table></div>
+    <div class="takeaway">Each assignment is worth 10 points, and the quiz is worth 90 points. All four are due Sunday, Nov 15, 11:59 PM.</div>
+  </div>
+</section>
+
+
+<section class="slide" id="modulemap" data-title="The module, in one table" data-part="Wrap-up">
+  <div class="wrap">
+    <div class="shead"><span class="chip">MAP</span><span class="kicker">Wrap-up</span>
+      <h2 class="stitle">Module 12 in one table</h2></div>
+    <div class="tscroll"><table class="house">
+      <caption>What each part of Module 12 covers, where it is in the deck, and what assesses it</caption>
+      <thead><tr><th scope="col">Topic <span class="small">(optional OpenStax reading)</span></th>
+      <th scope="col">Where it is</th><th scope="col">Assessed by</th></tr></thead>
+      <tbody>
+        <tr><td>The three functions of money, barter, and fiat money <span class="small">(&sect;27.1)</span></td>
+          <td>Day 1 &mdash; the functions slide and the fiat money slide</td><td>Quiz &middot; HW12a &middot; Exam 3</td></tr>
+        <tr><td>Measuring money: M1 and M2 <span class="small">(&sect;27.2)</span></td>
+          <td>Day 1 &mdash; the M1 and M2 slide</td><td>Quiz &middot; HW12a &middot; Exam 3</td></tr>
+        <tr><td>The origin of American banking, 1791&ndash;1913 <span class="small">(&sect;28.1, for the Federal Reserve)</span></td>
+          <td>Day 1 &mdash; the three history slides</td><td>Quiz &middot; HW12c &middot; Exam 3</td></tr>
+        <tr><td>Banks as intermediaries, and T-accounts <span class="small">(&sect;27.3)</span></td>
+          <td>Day 1 &mdash; the bank slide; Day 2 &mdash; the reserves slide</td><td>Quiz &middot; HW12b &middot; Exam 3</td></tr>
+        <tr><td>How banks create money, and the money multiplier <span class="small">(&sect;27.4)</span></td>
+          <td>Day 2 &mdash; Build #1, the multiplier slide, and the limits slide</td><td>Quiz &middot; HW12b &middot; Exam 3</td></tr>
+        <tr><td>Bank runs, deposit insurance, and supervision <span class="small">(&sect;28.2)</span></td>
+          <td>Day 2 &mdash; the bank-run slide and the regulation slide</td><td>Quiz &middot; HW12c &middot; Exam 3</td></tr>
+        <tr><td>Silicon Valley Bank, and positive against normative</td>
+          <td>Day 2 &mdash; the case slide</td><td>Quiz &middot; HW12c &middot; Exam 3</td></tr>
+      </tbody>
+    </table></div>
+    <div class="vocab"><p><strong>Vocabulary to know before Sunday:</strong> money &middot; barter &middot; double coincidence of wants &middot; medium of exchange &middot; store of value &middot; unit of account &middot; commodity money &middot; fiat money &middot; M1 &middot; M2 &middot; central bank &middot; Federal Reserve &middot; lender of last resort &middot; financial intermediary &middot; T-account &middot; assets &middot; liabilities &middot; reserves &middot; bank capital &middot; reserve ratio &middot; money multiplier &middot; bank run &middot; FDIC &middot; dual banking system.</p></div>
+  </div>
+</section>
+
+
+<section class="slide" id="wrap" data-title="Wrap — and where this goes" data-part="Wrap-up">
+  <div class="wrap">
+    <div class="shead"><span class="chip">WRAP</span><span class="kicker">Wrap-up</span>
+      <h2 class="stitle">What comes next</h2></div>
+    <div class="cols3">
+      <div class="card"><h3 class="ch">&#128198; This weekend</h3><ul>
+        <li>Finish the Week 12 Quiz.</li>
+        <li>Submit HW12a, HW12b, and HW12c.</li>
+        <li>All four are due <strong>Sunday, Nov 15, 11:59 PM</strong>.</li>
+      </ul></div>
+      <div class="card"><h3 class="ch">&#10145;&#65039; Week 13</h3>
+        <p>Week 13 covers <strong>fiscal and monetary policy</strong>: how the government and the Federal Reserve try to close a gap between real GDP and potential GDP, and why their actions take time to work. Class meets Tuesday, Nov 17, and Thursday, Nov 19.</p></div>
+      <div class="card"><h3 class="ch">&#128221; Exam 3 &mdash; Tuesday, Dec 1</h3>
+        <p>Exam 3 covers <strong>Weeks 10&ndash;13</strong>, in class, on paper. From this week: the functions of money, M1 and M2, the history of American banking, T-accounts and the money multiplier, and deposit insurance.</p></div>
+    </div>
+    <div class="depth"><p><strong>The main idea of Module 12.</strong> Money is a medium of exchange, a store of value, and a unit of account. The dollar is fiat money, and most of the money supply is bank deposits. A bank keeps part of each deposit as reserves and lends the rest, and each loan creates a new deposit, so the banking system creates money. The money multiplier, 1 / reserve ratio, gives the limit. Because banks keep only part of their deposits as reserves, they can fail in a run. The country answered that risk step by step: national banks in 1863, the Federal Reserve in 1913, and deposit insurance in 1933. Silicon Valley Bank showed in 2023 that runs can still happen when most deposits are uninsured.</p></div>
+    <div class="takeaway">Banks create most of the money people spend, and that is why they are insured and supervised.</div>
+    <aside class="notes"><span class="nlabel">Instructor notes</span>
+    <p>If you want a muddiest-point check: one sentence, how does a bank loan create new money?</p></aside>
+  </div>
+</section>
+
+
+<section class="slide" id="credits" data-title="Sources & credits" data-part="Wrap-up">
+  <div class="wrap">
+    <div class="shead"><span class="chip">CREDITS</span><span class="kicker">Wrap-up</span>
+      <h2 class="stitle">Sources, credits, and accessibility</h2></div>
+    <ul>
+      <li><strong>Reference text (optional, free):</strong> OpenStax, <em>Principles of Economics 3e</em> &mdash;
+        <a href="https://openstax.org/details/books/principles-economics-3e" target="_blank" rel="noopener">openstax.org (opens in a new tab)</a>. Licensed CC BY 4.0. The optional reading for this module is
+        <a href="https://openstax.org/books/principles-economics-3e/pages/27-1-defining-money-by-its-functions" target="_blank" rel="noopener">&sect;27.1 (opens in a new tab)</a>,
+        <a href="https://openstax.org/books/principles-economics-3e/pages/27-2-measuring-money-currency-m1-and-m2" target="_blank" rel="noopener">&sect;27.2 (opens in a new tab)</a>,
+        <a href="https://openstax.org/books/principles-economics-3e/pages/27-3-the-role-of-banks" target="_blank" rel="noopener">&sect;27.3 (opens in a new tab)</a>,
+        <a href="https://openstax.org/books/principles-economics-3e/pages/27-4-how-banks-create-money" target="_blank" rel="noopener">&sect;27.4 (opens in a new tab)</a>,
+        <a href="https://openstax.org/books/principles-economics-3e/pages/28-1-the-federal-reserve-banking-system-and-central-banks" target="_blank" rel="noopener">&sect;28.1 (opens in a new tab)</a>, and
+        <a href="https://openstax.org/books/principles-economics-3e/pages/28-2-bank-regulation" target="_blank" rel="noopener">&sect;28.2 (opens in a new tab)</a>.</li>
+      <li><strong>Definitions:</strong> money and its functions, M1 and M2, T-accounts, and the money multiplier follow OpenStax &sect;27.1&ndash;&sect;27.4 in substance, restated in course wording. This course uses the reserve ratio that banks choose, because the required ratio has been 0 percent since March 26, 2020.</li>
+      <li><strong>Data:</strong> currency, M1, and M2: Board of Governors of the Federal Reserve System, H.6 Money Stock Measures, seasonally adjusted, September 2026, through the FRED database (series CURRSL, M1SL, and M2SL). Reserve requirements: Federal Reserve Board, &ldquo;Reserve Requirements,&rdquo; and the interim final rule of March 2020. Deposit insurance limits: FDIC, <em>Options for Deposit Insurance Reform</em> (2023), Table 3.1. Bank suspensions, 1930&ndash;1933: the Week 8 figure.</li>
+      <li><strong>History:</strong> Federal Reserve History essays on the First Bank of the United States, the Second Bank of the United States, the National Banking Acts of 1863 and 1864, the Panic of 1907, and the Federal Reserve Act; Office of the Comptroller of the Currency, &ldquo;OCC History: 1863&ndash;1865&rdquo;; R. A. Radford, &ldquo;The Economic Organisation of a P.O.W. Camp,&rdquo; <em>Economica</em> (1945).</li>
+      <li><strong>Silicon Valley Bank:</strong> Board of Governors of the Federal Reserve System, <em>Review of the Federal Reserve&rsquo;s Supervision and Regulation of Silicon Valley Bank</em> (April 28, 2023); testimony of Michael S. Barr and of Martin J. Gruenberg, March 28, 2023; joint statement by the Treasury, the Federal Reserve, and the FDIC, March 12, 2023.</li>
+      <li><strong>Course-original:</strong> Lakeland&rsquo;s banks and every number derived from them, the stepwise build, the figures, the self-check, the T-Account Explorer and the town of Harlow in HW12b, the cases in HW12a and HW12c, and the optional run sheet.</li>
+      <li><strong>Accessibility:</strong> designed to WCAG 2.1 AA &mdash; every control works by keyboard, every figure carries a text description, reveals announce their state, and the print view (press <kbd>P</kbd>) gives a linear, reveal-open version of everything. If any part does not work with your assistive technology, message me through Canvas, and I can provide an alternative format.</li>
+    </ul>
+    <p class="small">ECON 100 &middot; Basic Economics &middot; Section 5 (#70718) &middot; Palomar College &middot; Fall 2026 &middot; Prof. Ron Ishii &middot; Module 12 deck. This deck is the Module 12 reading assignment.</p>
+  </div>
+</section>
+
+</main>
+
+<div id="navbar">
+  <div class="brand"><b>ECON 100 · Basic Economics · Fall 2026</b>Module 12 · Money and the Financial System · Palomar College</div>
+  <div class="navspacer"></div>
+  <button type="button" id="btn-menu" aria-haspopup="dialog">Menu <span class="small">(M)</span></button>
+  <button type="button" id="btn-prev" aria-label="Previous slide">&larr;</button>
+  <span id="counter" aria-hidden="true">1 / 1</span>
+  <button type="button" id="btn-next" aria-label="Next slide">Next &rarr;</button>
+</div>
+
+<div class="overlay" id="menu" role="dialog" aria-modal="true" aria-label="Table of contents">
+  <div class="panel">
+    <button type="button" class="closex" data-close="menu">Close ✕</button>
+    <h2>Contents</h2>
+    <p class="small">Click any slide to jump. Your place is saved in the page address — bookmark it to resume.</p>
+    <div id="toc"></div>
+    <h2 style="margin-top:18px">Keyboard</h2>
+    <p class="small"><kbd>&rarr;</kbd>/<kbd>&larr;</kbd> next / previous slide &middot; <kbd>Home</kbd>/<kbd>End</kbd> first / last
+    &middot; <kbd>M</kbd> this menu &middot; <kbd>P</kbd> print (linear view, answers revealed) &middot; <kbd>N</kbd> instructor notes.
+    Every reveal button and build control is reachable with <kbd>Tab</kbd> and works with <kbd>Enter</kbd>/<kbd>Space</kbd>.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var cur = 0, N = slides.length;
+  var counter = document.getElementById('counter');
+  var progress = document.getElementById('progress');
+  var announcer = document.getElementById('announcer');
+
+  slides.forEach(function(s,i){
+    s.setAttribute('role','group');
+    s.setAttribute('aria-roledescription','slide');
+    s.setAttribute('aria-label','Slide '+(i+1)+' of '+N+': '+(s.getAttribute('data-title')||''));
+    s.setAttribute('tabindex','-1');
+  });
+
+  function show(i, announce){
+    if(i<0) i=0; if(i>N-1) i=N-1;
+    slides[cur].classList.remove('active');
+    cur = i;
+    slides[cur].classList.add('active');
+    counter.textContent = (cur+1)+' / '+N;
+    progress.style.width = ((cur+1)/N*100)+'%';
+    if(history.replaceState){ history.replaceState(null,'','#'+(cur+1)); }
+    window.scrollTo(0,0);
+    if(announce!==false){
+      announcer.textContent = 'Slide '+(cur+1)+' of '+N+': '+(slides[cur].getAttribute('data-title')||'');
+    }
+  }
+  function next(){ show(cur+1); } function prev(){ show(cur-1); }
+
+  document.getElementById('btn-next').addEventListener('click', next);
+  document.getElementById('btn-prev').addEventListener('click', prev);
+
+  /* ---------- keyboard ---------- */
+  document.addEventListener('keydown', function(e){
+    var tag = (e.target.tagName||'').toLowerCase();
+    var typing = (tag==='input'||tag==='textarea'||tag==='select');
+    var menuOpen = document.getElementById('menu').classList.contains('open');
+    if(e.key==='Escape'){ closeOverlays(); return; }
+    if(typing || menuOpen) return;
+    switch(e.key){
+      case 'ArrowRight': case 'PageDown': next(); e.preventDefault(); break;
+      case 'ArrowLeft': case 'PageUp': prev(); e.preventDefault(); break;
+      case 'Home': show(0); e.preventDefault(); break;
+      case 'End': show(N-1); e.preventDefault(); break;
+      case 'm': case 'M': toggleMenu(); break;
+      case 'n': case 'N': document.body.classList.toggle('show-notes'); break;
+      case 'p': case 'P': window.print(); break;
+    }
+  });
+
+  /* ---------- touch swipe ---------- */
+  var tx=null, ty=null;
+  document.addEventListener('touchstart', function(e){
+    if(e.touches.length!==1) return;
+    tx=e.touches[0].clientX; ty=e.touches[0].clientY;
+  }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    if(tx===null) return;
+    var dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+    tx=ty=null;
+    if(Math.abs(dx)>70 && Math.abs(dx)>2*Math.abs(dy)){
+      var t=e.target;
+      while(t){ if(t.classList && (t.classList.contains('build')||t.tagName==='FORM')) return; t=t.parentElement; }
+      if(dx<0) next(); else prev();
+    }
+  }, {passive:true});
+
+  /* ---------- hash deep link ---------- */
+  var h = parseInt((location.hash||'').replace('#',''),10);
+  show(isNaN(h)?0:h-1, false);
+  window.addEventListener('hashchange', function(){
+    var v = parseInt((location.hash||'').replace('#',''),10);
+    if(!isNaN(v) && v-1!==cur) show(v-1);
+  });
+
+  /* ---------- menu / overlays ---------- */
+  var menu = document.getElementById('menu');
+  function toggleMenu(){ menu.classList.toggle('open');
+    if(menu.classList.contains('open')) menu.querySelector('.closex').focus(); }
+  function closeOverlays(){ menu.classList.remove('open'); }
+  document.getElementById('btn-menu').addEventListener('click', toggleMenu);
+  menu.addEventListener('click', function(e){ if(e.target===menu) closeOverlays(); });
+  document.querySelectorAll('[data-close]').forEach(function(b){
+    b.addEventListener('click', closeOverlays);
+  });
+
+  /* build the TOC */
+  var toc = document.getElementById('toc'), lastPart=null, listEl=null;
+  slides.forEach(function(s,i){
+    var part = s.getAttribute('data-part')||'';
+    if(part!==lastPart){
+      var hd=document.createElement('div'); hd.className='tocpart'; hd.textContent=part; toc.appendChild(hd);
+      listEl=document.createElement('ul'); listEl.className='toclist'; toc.appendChild(listEl);
+      lastPart=part;
+    }
+    var li=document.createElement('li'), b=document.createElement('button');
+    b.type='button';
+    b.innerHTML='<span class="tnum">'+(i+1)+'</span> '+(s.getAttribute('data-title')||'');
+    b.addEventListener('click', function(){ closeOverlays(); show(i); slides[i].focus({preventScroll:true}); });
+    li.appendChild(b); listEl.appendChild(li);
+  });
+
+  /* ---------- predict-first / checkpoint reveals ---------- */
+  document.querySelectorAll('.revealbtn[aria-expanded]').forEach(function(btn){
+    var reveal = btn.parentElement.querySelector('.reveal');
+    if(!reveal) return;
+    btn.addEventListener('click', function(){
+      var open = reveal.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open?'true':'false');
+      if(open){ btn.textContent = 'Hide'; }
+      else{ btn.textContent = btn.getAttribute('data-label') || 'Reveal the answer'; }
+    });
+    btn.setAttribute('data-label', btn.textContent);
+  });
+
+  /* ---------- stepwise builds ---------- */
+  document.querySelectorAll('.build').forEach(function(b){
+    var caps = Array.prototype.map.call(b.querySelectorAll('.bcaps > li'), function(li){ return li.innerHTML; });
+    var total = caps.length, step = 1;
+    var layers = b.querySelectorAll('[data-step]');
+    var stepEl = b.querySelector('.bstep'), textEl = b.querySelector('.btext');
+    var prevB = b.querySelector('.bprev'), nextB = b.querySelector('.bnext');
+    var dots = b.querySelector('.bdots');
+    for(var i=0;i<total;i++){ dots.appendChild(document.createElement('span')); }
+    function render(){
+      layers.forEach(function(g){
+        var k = parseInt(g.getAttribute('data-step'),10);
+        g.classList.toggle('shown', k<=step);
+      });
+      stepEl.textContent = 'Step '+step+' of '+total;
+      textEl.innerHTML = caps[step-1];
+      prevB.disabled = (step===1);
+      nextB.disabled = (step===total);
+      nextB.textContent = (step===total) ? 'Done ✓' : 'Next step →';
+      Array.prototype.forEach.call(dots.children, function(d,i){ d.classList.toggle('on', i<step); });
+    }
+    prevB.addEventListener('click', function(){ if(step>1){ step--; render(); } });
+    nextB.addEventListener('click', function(){ if(step<total){ step++; render(); } });
+    render();
+  });
+
+  /* ---------- self-check ---------- */
+  var quiz = document.getElementById('sc-quiz');
+  if(quiz){
+    var right={}, tried={};
+    var score = document.getElementById('sc-score');
+    function tally(){
+      var r=Object.keys(right).filter(function(k){return right[k];}).length;
+      var t=Object.keys(tried).length;
+      score.textContent = t===0 ? 'Answer the questions above — your running count appears here.'
+        : 'So far: '+r+' of '+t+' answered correctly'+(t===6?(r===6?' — all six.':'. Reread the feedback on the ones you missed and try again.'):'.');
+    }
+    quiz.querySelectorAll('fieldset').forEach(function(fs){
+      var q=fs.getAttribute('data-q'), ans=fs.getAttribute('data-ans');
+      var fb=fs.querySelector('.fb');
+      fs.querySelectorAll('input[type=radio]').forEach(function(inp){
+        inp.addEventListener('change', function(){
+          tried[q]=true; var ok=(this.value===ans); right[q]=ok;
+          fb.className='fb '+(ok?'ok':'no');
+          fb.textContent=fb.getAttribute(ok?'data-ok':'data-no');
+          tally();
+        });
+      });
+    });
+    document.getElementById('sc-reset').addEventListener('click', function(){
+      quiz.reset(); right={}; tried={};
+      quiz.querySelectorAll('.fb').forEach(function(f){ f.className='fb'; f.textContent=''; });
+      score.textContent='Your answers are cleared. Answer the questions above to start again.';
+    });
+  }
+})();
+</script>
+</body>
+</html>
